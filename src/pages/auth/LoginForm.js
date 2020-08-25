@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './LoginPage.module.css';
+import styles from './LoginForm.module.css';
 
-function LoginPage() {
+function LoginForm() {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Трекер привычек</h2>
@@ -18,4 +18,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default LoginForm;

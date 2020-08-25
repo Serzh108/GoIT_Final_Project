@@ -1,5 +1,6 @@
 import React from 'react';
 import RegistrationPage from './pages/auth/RegistrationPage';
+import LoginPage from './pages/auth/LoginPage';
 import logo from './assets/images/logo.png';
 import './App.css';
 
@@ -10,6 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>GoIT Bootcamp19 Final project</p>
         <RegistrationPage />
+        {/* <LoginPage /> */}
       </header>
     </div>
   );
