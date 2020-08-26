@@ -1,86 +1,89 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+// import shortid from 'shortid';
 import styles from './LoginForm.module.css';
 
-const initialState = {
-  email: '',
-  password: '',
-};
+class LoginForm extends Component {
+  state = {
+    email: '',
+    password: '',
+    isemailOnFocus: false,
+    ispasswordOnFocus: false,
+  };
+  // ============= temp!!! =========
+  emailInputId = new Date();
+  passwordInputId = new Date();
+  // emailInputId = shortid.generate();
+  // passwordInputId = shortid.generate();
 
-const initialFocus = {
-  email: false,
-  password: false,
-};
-
-function LoginForm() {
-  const [state, setState] = useState(initialState);
-  const changeHandler = e => {
+  handleChange = e => {
     const { name, value } = e.currentTarget;
-    setState({ [name]: value });
-
-    console.log('changeHandler - email = ', state.email);
-    console.log('changeHandler - password = ', state.password);
+    this.setState({ [name]: value });
   };
 
-  const submitHandler = evt => {
-    evt.preventDefault();
-    const { email, password } = state;
-    console.log('email = ', email);
-    console.log('password = ', password);
-    setState({ initialState });
+  handleSubmit = e => {
+    e.preventDefault();
+    // запрос на бэк
+    console.log('this.state = ', this.state);
+    this.reset();
   };
 
-  const [focused, setFocused] = useState(initialFocus);
-  const inputFocused = e => {
+  reset = () => {
+    this.setState({ email: '', password: '' });
+  };
+
+  inputFocused = e => {
     const { name } = e.currentTarget;
-    setFocused({ [name]: true });
+    this.setState({ [`is${name}OnFocus`]: true });
   };
-  const inputBlured = e => {
+  inputBlured = e => {
     const { name } = e.currentTarget;
-    setFocused({ [name]: false });
+    this.setState({ [`is${name}OnFocus`]: false });
   };
 
-  return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Трекер привычек</h2>
-      <p className={styles.title_description}>Вход</p>
-      <form onSubmit={submitHandler} className={styles.form}>
-        <label htmlFor={'registrationEmail'} className={styles.nameLabel}>
-          <input
-            value={state.email}
-            name="email"
-            type="email"
-            id={'registrationEmail'}
-            className={styles.input}
-            placeholder={!focused.email ? 'Эл. почта' : ''}
-            onChange={changeHandler}
-            onFocus={inputFocused}
-            onBlur={inputBlured}
-          />
-          {focused.email ? <span>E-mail</span> : null}
-        </label>
-        <label htmlFor={'registrationPassword'} className={styles.nameLabel}>
-          <input
-            value={state.password}
-            name="password"
-            type="password"
-            id={'registrationPassword'}
-            className={styles.input}
-            placeholder={!focused.password ? 'Пароль' : ''}
-            onChange={changeHandler}
-            onFocus={inputFocused}
-            onBlur={inputBlured}
-          />
-          {focused.password ? <span>Пароль</span> : null}
-        </label>
-        <button type="submit" className={styles.registration_btn}>
-          Войти
-        </button>
-      </form>
-      <p className={styles.form_description}>
-        Еще нет аккаунта?<a href="#"> Зарегистрироваться</a>
-      </p>
-    </div>
-  );
+  render() {
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Трекер привычек</h2>
+        <p className={styles.title_description}>Вход</p>
+        <form onSubmit={this.handleSubmit} className={styles.form}>
+          <label htmlFor={this.emailInputId} className={styles.nameLabel}>
+            <input
+              value={this.state.email}
+              name="email"
+              type="email"
+              id={this.emailInputId}
+              className={styles.input}
+              placeholder={!this.state.isemailOnFocus ? 'Эл. почта' : ''}
+              onChange={this.handleChange}
+              onFocus={this.inputFocused}
+              onBlur={this.inputBlured}
+            />
+            {this.state.isemailOnFocus ? <span>E-mail</span> : null}
+          </label>
+          <label htmlFor={this.passwordInputId} className={styles.nameLabel}>
+            <input
+              value={this.state.password}
+              name="password"
+              type="password"
+              id={this.passwordInputId}
+              className={styles.input}
+              placeholder={!this.state.ispasswordOnFocus ? 'Пароль' : ''}
+              onChange={this.handleChange}
+              onFocus={this.inputFocused}
+              onBlur={this.inputBlured}
+            />
+            {this.state.ispasswordOnFocus ? <span>Пароль</span> : null}
+          </label>
+          <button type="submit" className={styles.registration_btn}>
+            Войти
+          </button>
+        </form>
+        <p className={styles.form_description}>
+          Еще нет аккаунта?<a href="#"> Зарегистрироваться</a>
+        </p>
+      </div>
+    );
+  }
 }
 
 export default LoginForm;

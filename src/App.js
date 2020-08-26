@@ -10,8 +10,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>GoIT Bootcamp19 Final project</p>
-        {/* <RegistrationPage /> */}
-        <LoginPage />
+        <RegistrationPage />
+        {/* <LoginPage /> */}
       </header>
     </div>
   );
