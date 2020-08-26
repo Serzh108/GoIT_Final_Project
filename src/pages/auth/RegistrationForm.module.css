@@ -30,7 +30,21 @@
 }
 
 .form {
-  margin-bottom: 41px;
+  margin-bottom: 16px;
+}
+
+.nameLabel {
+  display: block;
+  position: relative;
+  color: #a6acbe;
+}
+
+.nameLabel span {
+  position: absolute;
+  top: 0px;
+  left: 8px;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .input {
@@ -45,30 +59,35 @@
   line-height: 22px;
   letter-spacing: 0.04em;
   color: #181c27;
+  /* background-color: #fff; */
   border: none;
   border-bottom: 1px solid #eef0f6;
 }
 
+.nameLabel:last-of-type {
+  margin-bottom: 41px;
+}
+
 .input:focus {
   outline: none;
-  /* border: none;
-  border-bottom: 1px solid #eef0f6; */
 }
 
 .input::placeholder {
   color: #a6acbe;
 }
-
+/* 
 .input:hover::placeholder {
   font-size: 12px;
   line-height: 15px;
-}
+} */
 
 .registration_btn {
   width: 263px;
   height: 50px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
   border: none;
+  outline: none;
+  cursor: pointer;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;

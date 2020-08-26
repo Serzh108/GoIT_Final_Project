@@ -5,7 +5,7 @@ import RegistrationForm from './RegistrationForm';
 function RegistrationPage() {
   return (
     <div className={styles.page_container}>
-      <header className={styles.header}>bdfdsbdfbdgbcf</header>
+      <header className={styles.header}></header>
       <section className={styles.section}>
         <div className={styles.formBox}>
           <RegistrationForm />
