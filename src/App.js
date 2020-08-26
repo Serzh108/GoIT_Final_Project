@@ -1,6 +1,4 @@
 import React from 'react';
-import RegistrationPage from './pages/auth/RegistrationPage';
-import LoginPage from './pages/auth/LoginPage';
 import logo from './assets/images/logo.png';
 import './App.css';
 import SideBarHabits from './components/SideBarHabits';
