@@ -64,13 +64,7 @@ const Table = ({ backData }) => {
       <table>
         <thead></thead>
         <tbody>
-          <tr>
-            {backData.map(item => play(item))}
-
-            {/* {backData.map(item => (<td onClick={clickHabit} className={css.box}>
-                {doneHabit? <ClearIcon  style={{ color: '#FF4C61' }}></ClearIcon> : <DoneIcon style={{ color: '#33D69F' }}></DoneIcon>}   
-               </td>))} */}
-          </tr>
+          <tr>{backData.map(item => play(item))}</tr>
         </tbody>
       </table>
     </>
