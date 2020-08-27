@@ -2,6 +2,13 @@ table {
   border-collapse: collapse;
 }
 
+.sidebar {
+  position: relative;
+  width: 269px;
+  height: 768px;
+  background: #373b53;
+}
+
 .side {
   background-color: rgba(55, 59, 83, 0.9);
   color: #a6acbe;
