@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './assets/images/logo.png';
 import './App.css';
-import SideBarHabits from './components/SideBarHabits';
+import SideBarHabits from './components/SideBarHabits/SideBarHabits';
 import RegistrationPage from './pages/auth/RegistrationPage';
 import ExitModal from './components/ExitModal/ExitModal';
 import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
