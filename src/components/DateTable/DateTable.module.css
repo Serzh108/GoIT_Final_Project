@@ -1,0 +1,27 @@
+table {
+  border-collapse: collapse;
+  /* caption-side:bottom; */
+}
+
+.box {
+  width: 37px;
+  height: 65px;
+  border: solid 1px #eef0f7;
+  text-align: center;
+}
+.box:nth-child(7n) {
+  border-right-color: rgba(255, 108, 0, 0.3);
+}
+
+.week {
+  font-family: Roboto;
+  font-size: 11px;
+  color: #a6acbe;
+  margin-bottom: 5px;
+}
+
+.date {
+  font-family: Roboto;
+  font-size: 11px;
+  color: #181c27;
+}

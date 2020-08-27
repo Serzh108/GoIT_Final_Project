@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import css from './SideBarHabits.module.css';
+
 import AddIcon from '@material-ui/icons/Add';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from './DeleteHabitModal/DeleteHabitModal';
