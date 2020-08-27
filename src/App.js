@@ -5,13 +5,14 @@ import SideBarHabits from './components/SideBarHabits/SideBarHabits';
 import RegistrationPage from './pages/auth/RegistrationPage';
 import ExitModal from './components/ExitModal/ExitModal';
 import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
-import StatistictPage from './pages/dashboard/StatisticsPage';
+import StatisticsPage from './pages/dashboard/StatisticsPage';
+
 const App = () => {
   return (
     <>
       {/* <DeleteHabitModal /> */}
       {/* <ExitModal /> */}
-      <StatistictPage />
+      <StatisticsPage />
       {/* <SideBarHabits /> */}
       {/* <RegistrationPage /> */}
       {/* <LoginPage /> */}
