@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import shortid from 'shortid';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './RegistrationForm.module.css';
 
 class RegistrationForm extends Component {
@@ -12,11 +12,9 @@ class RegistrationForm extends Component {
     ispasswordOnFocus: false,
   };
   // ============= temp!!! =========
-  nameInputId = new Date();
-  emailInputId = new Date();
-  passwordInputId = new Date();
-  // emailInputId = shortid.generate();
-  // passwordInputId = shortid.generate();
+  nameInputId = uuidv4();
+  emailInputId = uuidv4();
+  passwordInputId = uuidv4();
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
