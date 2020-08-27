@@ -6,6 +6,7 @@ import RegistrationPage from './pages/auth/RegistrationPage';
 import ExitModal from './components/ExitModal/ExitModal';
 import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
 import StatistictPage from './pages/dashboard/StatisticsPage';
+
 const App = () => {
   return (
     <>
