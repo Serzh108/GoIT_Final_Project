@@ -31,7 +31,7 @@ const DateTable = ({ backData }) => {
       {/* <SideBarItem/> */}
       {backData.map((item, index) => getCalendarDay(index))}
       <td key={uuidv4()} className={css.efficiency}>
-        <div>Эффективность выполнения</div>
+        <div>Эффективность выполнения, %</div>
       </td>
       {/* </tr>
         </tbody>
