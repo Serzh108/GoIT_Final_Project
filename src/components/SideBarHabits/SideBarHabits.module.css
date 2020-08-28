@@ -24,10 +24,11 @@ table {
   letter-spacing: 0.01em;
   font-family: Montserrat, sans-serif;
   font-weight: bold;
+  position: relative;
 }
 
 .name {
-  height: 82px;
+  height: 69px;
   width: 214px;
   padding-left: 30px;
   font-family: Montserrat, sans-serif;

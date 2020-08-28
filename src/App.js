@@ -8,12 +8,14 @@ import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
 import Table from './components/Table/Table';
 import DateTable from './components/DateTable/DateTable';
 import MainTable from './components/MainTable';
+import StatisticsPage from './pages/dashboard/StatisticsPage';
 
 const App = () => {
   return (
+    <StatisticsPage />
     // <DeleteHabitModal/>
     // <ExitModal/>
-    <MainTable />
+    // <MainTable />
     // <Table/>
     // <SideBarHabits />
     // <div className="App">
