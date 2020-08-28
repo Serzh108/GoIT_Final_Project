@@ -99,6 +99,7 @@ const SideBarHabits = ({ name }) => {
                 </div>
               )}
             </td>
+            {/* <td>Hello</td> */}
           </tr>
           <tr className={css.habitWrap}>
             <td

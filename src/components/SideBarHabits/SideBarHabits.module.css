@@ -23,8 +23,15 @@ table {
   align-items: center;
   letter-spacing: 0.01em;
   font-family: Montserrat, sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   position: relative;
+  background-color: rgba(55, 59, 83, 0.9);
+  color: #a6acbe;
+  padding-left: 30px;
+}
+
+.habits::first-letter {
+  text-transform: uppercase;
 }
 
 .name {
@@ -56,4 +63,6 @@ table {
 
 .iconsWrap {
   margin-left: 130px;
+  position: absolute;
+  top: 22px;
 }

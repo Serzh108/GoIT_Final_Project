@@ -71,7 +71,7 @@ const Table = ({ backData, percentage }) => {
           <tr className={css.checkWrap}>
             {backData.map(item => play(item))}
             <td className={css.progressWrap}>
-              {percentage <= 79 ? (
+              {/* {percentage <= 79 ? (
                 <div style={{ paddingTop: '10px', width: '50px' }}>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -80,7 +80,7 @@ const Table = ({ backData, percentage }) => {
                       textSize: '30px',
                     })}
                     value={percentage}
-                    text={`${percentage}%`}
+                    text={`${percentage}`}
                   />
                 </div>
               ) : (
@@ -92,10 +92,10 @@ const Table = ({ backData, percentage }) => {
                       textSize: '30px',
                     })}
                     value={percentage}
-                    text={`${percentage}%`}
+                    text={`${percentage}`}
                   />
                 </div>
-              )}
+              )} */}
 
               {/* <Progress/> */}
             </td>
