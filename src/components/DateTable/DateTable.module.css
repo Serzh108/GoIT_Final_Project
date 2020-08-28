@@ -1,9 +1,3 @@
-.dateTable {
-  position: absolute;
-  top: 119px;
-  left: 269px;
-}
-
 table {
   border-collapse: collapse;
   /* caption-side:bottom; */
