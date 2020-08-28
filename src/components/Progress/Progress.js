@@ -5,7 +5,7 @@ function Progress() {
   return (
     <>
       <div className={style.progressPercentsGreen}>100</div>
-      <div className={style.progressPercentsRed}>100</div>
+      {/* <div className={style.progressPercentsRed}>100</div> */}
     </>
   );
 }

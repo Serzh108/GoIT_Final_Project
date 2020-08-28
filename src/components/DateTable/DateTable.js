@@ -21,10 +21,15 @@ const DateTable = ({ backData }) => {
 
   return (
     <>
-      <table>
+      <table className={css.dateTable}>
         <thead></thead>
         <tbody>
-          <tr>{backData.map((item, index) => getCalendarDay(index))}</tr>
+          <tr>
+            {backData.map((item, index) => getCalendarDay(index))}
+            <td className={css.efficiency}>
+              <div>Эффективность выполнения, %</div>
+            </td>
+          </tr>
         </tbody>
       </table>
       {/* <Table />  */}
