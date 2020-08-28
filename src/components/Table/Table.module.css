@@ -6,6 +6,12 @@ td {
   /* width: 37px; */
 }
 
+.checkTable {
+  position: absolute;
+  top: 174px;
+  left: 269px;
+}
+
 table {
   border-collapse: collapse;
   /* caption-side:bottom; */
@@ -17,9 +23,18 @@ table {
   border: solid 1px #eef0f7;
   text-align: center;
 }
+
 .box:nth-child(7n) {
   border-right-color: rgba(255, 108, 0, 0.3);
 }
 
 .clear {
+}
+
+.progressWrap {
+  width: 188px;
+  display: flex;
+  justify-content: center;
+  border: solid 1px #eef0f7;
+  height: 68px;
 }
