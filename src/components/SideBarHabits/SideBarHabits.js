@@ -5,6 +5,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import FormInputAddHabit from '../FormInputAddHabit/FormInputAddHabit';
 import EditIcon from '@material-ui/icons/Edit';
+import SideBarItem from '../SideBarItem/SideBarItem';
 
 const SideBarHabits = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -50,12 +51,13 @@ const SideBarHabits = () => {
         <thead></thead>
         <tbody className={css.side}>
           <tr>
-            <td className={css.habits}>
+            <SideBarItem />
+            {/* <td className={css.habits}>
               <button onClick={addHabit} className={css.btn}>
                 <AddIcon style={{ color: 'white' }}></AddIcon>
               </button>
               Привычки
-            </td>
+            </td> */}
           </tr>
           <tr className={css.habitWrap}>
             <td
@@ -138,9 +140,20 @@ const SideBarHabits = () => {
               )}
             </td>
           </tr>
+          {newInput && (
+            <tr className={css.habitWrap}>
+              <td
+              // className={css.name}
+              // onMouseOver={showButtons}
+              // onMouseLeave={hideButtons}
+              >
+                <FormInputAddHabit />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
-      {newInput && <FormInputAddHabit />}
+      {/* {newInput && <FormInputAddHabit />} */}
     </>
   );
 };

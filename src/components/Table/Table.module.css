@@ -11,15 +11,28 @@ table {
   /* caption-side:bottom; */
 }
 
+.checkTable {
+  height: 69px;
+}
+
 .box {
   width: 37px;
   height: 65px;
   border: solid 1px #eef0f7;
   text-align: center;
 }
+
 .box:nth-child(7n) {
   border-right-color: rgba(255, 108, 0, 0.3);
 }
 
 .clear {
+}
+
+.progressWrap {
+  width: 186px;
+  display: flex;
+  justify-content: center;
+  border: solid 1px #eef0f7;
+  height: 68px;
 }

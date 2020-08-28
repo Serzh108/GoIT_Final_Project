@@ -5,7 +5,7 @@ table {
 
 .box {
   width: 37px;
-  height: 65px;
+  height: 54px;
   border: solid 1px #eef0f7;
   text-align: center;
 }
@@ -14,14 +14,23 @@ table {
 }
 
 .week {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 11px;
   color: #a6acbe;
   margin-bottom: 5px;
 }
 
 .date {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 11px;
+  color: #181c27;
+}
+
+.efficiency {
+  border: solid 1px #eef0f7;
+  width: 188px;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
   color: #181c27;
 }

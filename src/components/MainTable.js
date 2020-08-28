@@ -30,7 +30,7 @@ const MainTable = () => {
   return (
     <>
       <DateTable backData={backData} />
-      <Table backData={backData} />
+      {/* <Table backData={backData} /> */}
     </>
   );
 };
