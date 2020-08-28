@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import Progress from '../Progress/Progress';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-const percentage = 20;
+// const percentage = 79;
 
-const Table = ({ backData }) => {
+const Table = ({ backData, percentage }) => {
   const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
@@ -68,16 +68,36 @@ const Table = ({ backData }) => {
       <table className={css.checkTable}>
         <thead></thead>
         <tbody>
-          <tr>
+          <tr className={css.checkWrap}>
             {backData.map(item => play(item))}
             <td className={css.progressWrap}>
-              <div>
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                />
-                {/* <Progress/> */}
-              </div>
+              {percentage <= 79 ? (
+                <div style={{ paddingTop: '10px', width: '50px' }}>
+                  <CircularProgressbar
+                    styles={buildStyles({
+                      pathColor: 'red',
+                      textColor: 'black',
+                      textSize: '30px',
+                    })}
+                    value={percentage}
+                    text={`${percentage}%`}
+                  />
+                </div>
+              ) : (
+                <div style={{ paddingTop: '10px', width: '50px' }}>
+                  <CircularProgressbar
+                    styles={buildStyles({
+                      pathColor: 'green',
+                      textColor: 'black',
+                      textSize: '30px',
+                    })}
+                    value={percentage}
+                    text={`${percentage}%`}
+                  />
+                </div>
+              )}
+
+              {/* <Progress/> */}
             </td>
           </tr>
         </tbody>
