@@ -1,5 +1,8 @@
 import React from 'react';
 import css from './DateTable.module.css';
+import SideBarItem from '../SideBarItem/SideBarItem';
+import { v4 as uuidv4 } from 'uuid';
+
 // import Table from '../Table/Table';
 
 const DateTable = ({ backData }) => {
@@ -21,17 +24,18 @@ const DateTable = ({ backData }) => {
 
   return (
     <>
-      <table className={css.dateTable}>
+      {/* <table className={css.dateTable}>
         <thead></thead>
         <tbody>
-          <tr>
-            {backData.map((item, index) => getCalendarDay(index))}
-            <td className={css.efficiency}>
-              <div>Эффективность выполнения</div>
-            </td>
-          </tr>
+          <tr> */}
+      {/* <SideBarItem/> */}
+      {backData.map((item, index) => getCalendarDay(index))}
+      <td key={uuidv4()} className={css.efficiency}>
+        <div>Эффективность выполнения</div>
+      </td>
+      {/* </tr>
         </tbody>
-      </table>
+      </table> */}
       {/* <Table />  */}
     </>
   );

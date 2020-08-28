@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './header.module.css';
 
-function Header({ handleLogOut }) {
+function Header({ handleLogOut, name, total }) {
   return (
     <>
       <header>
         <div className={style.headerContainer}>
           <div className={style.wtf}></div>
           <ul className={style.userName}>
-            <li className={style.userNameNick}>Анна</li>
+            <li className={style.userNameNick}>{name}</li>
             <li className={style.userNameLevel}>Новичок</li>
           </ul>
           <ul className={style.sloganWrapper}>
@@ -35,7 +35,7 @@ function Header({ handleLogOut }) {
             </li>
           </ul>
           <ul className={style.balls}>
-            <li className={style.ballsNumbers}>290</li>
+            <li className={style.ballsNumbers}>{total}</li>
             <li className={style.ballsText}>Баллы</li>
           </ul>
           <ul className={style.buttonWrapper}>
