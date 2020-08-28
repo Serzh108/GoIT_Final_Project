@@ -7,7 +7,7 @@ import ExitModal from './components/ExitModal/ExitModal';
 import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
 import Table from './components/Table/Table';
 import DateTable from './components/DateTable/DateTable';
-import MainTable from './components/MainTable';
+import MainTable from './components/MainTable/MainTable';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
 const App = () => {
   return (
@@ -15,9 +15,9 @@ const App = () => {
       <StatisticsPage />
       {/* <DeleteHabitModal/>
  <ExitModal/> */}
-      <MainTable />
+      {/* <MainTable /> */}
       {/* <Table/> */}
-      <SideBarHabits />
+      {/* <SideBarHabits /> */}
       {/* <div className="App">
 <header className="App-header">
 <img src={logo} className="App-logo" alt="logo" />
