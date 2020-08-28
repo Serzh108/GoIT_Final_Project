@@ -12,6 +12,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import css from '../../components/Table/Table.module.css';
 import DateTable from '../../components/DateTable/DateTable';
+import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHabit';
 
 function StatisticsPage() {
   const handleLogOut = e => {
@@ -44,24 +45,26 @@ function StatisticsPage() {
                       <div style={{ paddingTop: '10px', width: '50px' }}>
                         <CircularProgressbar
                           styles={buildStyles({
-                            pathColor: 'red',
+                            pathColor: '#FF4C61',
                             textColor: 'black',
                             textSize: '30px',
+                            trailColor: '#F8F8FB',
                           })}
                           value={item.efficiency}
-                          text={`${item.efficiency}%`}
+                          text={`${item.efficiency}`}
                         />
                       </div>
                     ) : (
                       <div style={{ paddingTop: '10px', width: '50px' }}>
                         <CircularProgressbar
                           styles={buildStyles({
-                            pathColor: 'green',
+                            pathColor: '#33D69F',
                             textColor: 'black',
                             textSize: '30px',
+                            trailColor: '#F8F8FB',
                           })}
                           value={item.efficiency}
-                          text={`${item.efficiency}%`}
+                          text={`${item.efficiency}`}
                         />
                       </div>
                     )}
