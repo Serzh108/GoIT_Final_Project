@@ -23,7 +23,7 @@ const App = () => {
 <img src={logo} className="App-logo" alt="logo" />
 <p>GoIT Bootcamp19 Final project</p>
   <RegistrationPage />
-  <LoginPage />
+  // <LoginPage />
  </header>
  </div> */}
     </>

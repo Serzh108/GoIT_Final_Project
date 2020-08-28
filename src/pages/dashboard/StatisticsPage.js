@@ -9,6 +9,7 @@ function StatisticsPage() {
   const handleLogOut = e => {
     console.log('LogOut');
   };
+
   return (
     <>
       <main className={style.mainContainer}>
@@ -19,7 +20,7 @@ function StatisticsPage() {
             <MainTable />
           </div>
         </div>
-        <Progress />
+        {/* <Progress  /> */}
       </main>
     </>
   );
