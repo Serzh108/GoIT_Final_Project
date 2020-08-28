@@ -1,7 +1,7 @@
 import React from 'react';
-import DateTable from './DateTable/DateTable';
-import Table from './Table/Table';
-
+import DateTable from '../DateTable/DateTable';
+import Table from '../Table/Table';
+import style from './mainTable.module.css';
 const MainTable = () => {
   const backData = [
     null,
@@ -29,8 +29,10 @@ const MainTable = () => {
 
   return (
     <>
-      <DateTable backData={backData} />
-      <Table backData={backData} />
+      <div className={style.dateTableWrapper}>
+        <DateTable backData={backData} />
+        <Table backData={backData} />
+      </div>
     </>
   );
 };

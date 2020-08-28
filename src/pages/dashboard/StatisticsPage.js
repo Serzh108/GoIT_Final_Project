@@ -3,20 +3,24 @@ import style from './statisticsPage.module.css';
 import Header from '../../components/Header/Header';
 import Progress from '../../components/Progress/Progress';
 import SideBarHabits from '../../components/SideBarHabits/SideBarHabits';
-import MainTable from '../../components/MainTable';
+import MainTable from '../../components/MainTable/MainTable';
 
 function StatisticsPage() {
+  const handleLogOut = e => {
+    console.log('LogOut');
+  };
   return (
     <>
-      <Header />
-
-      <div className={style.sideBar}>
-        <div className={style.date}>
-          <SideBarHabits />
+      <main className={style.mainContainer}>
+        <Header handleLogOut={handleLogOut} />
+        <div className={style.sideBar}>
+          <div className={style.date}>
+            <SideBarHabits />
+            <MainTable />
+          </div>
         </div>
-      </div>
-      {/* <Progress /> */}
-      <MainTable />
+        <Progress />
+      </main>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './DateTable.module.css';
+// import Table from '../Table/Table';
 
 const DateTable = ({ backData }) => {
   const getCalendarDay = i => {
@@ -31,6 +32,7 @@ const DateTable = ({ backData }) => {
           </tr>
         </tbody>
       </table>
+      {/* <Table />  */}
     </>
   );
 };
