@@ -8,7 +8,7 @@ const DateTable = ({ backData }) => {
     const weekDay = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
     const day = weekDay[now.getDay()];
     const month = String(now.getMonth() + 1).padStart(2, '0');
-    const data = now.getDate();
+    const data = String(now.getDate()).padStart(2, '0');
     const currentDate = `${data}.${month}`;
 
     return (
@@ -27,7 +27,7 @@ const DateTable = ({ backData }) => {
           <tr>
             {backData.map((item, index) => getCalendarDay(index))}
             <td className={css.efficiency}>
-              <div>Эффективность выполнения, %</div>
+              <div>Эффективность выполнения</div>
             </td>
           </tr>
         </tbody>

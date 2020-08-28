@@ -2,36 +2,49 @@ import React from 'react';
 import DateTable from '../DateTable/DateTable';
 import Table from '../Table/Table';
 import style from './mainTable.module.css';
+
 const MainTable = () => {
   const backData = [
-    null,
-    null,
-    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
     true,
     null,
-    false,
     true,
-    null,
-    null,
-    false,
-    true,
-    null,
-    false,
-    true,
-    null,
-    null,
-    false,
-    true,
-    null,
-    false,
     true,
   ];
+
+  const done = backData.filter(item => item === true).length;
+  console.log('done', done);
+  // const missed = backData.filter(item => item === false).length
+  // console.log('missed', missed)
+  // const checked = done + missed
+  // console.log('checked', checked)
+  const total = backData.length;
+  console.log('total', total);
+
+  const percentage = Math.floor((done / total) * 100);
+  console.log('percentage', percentage);
 
   return (
     <>
       <div className={style.dateTableWrapper}>
         <DateTable backData={backData} />
-        <Table backData={backData} />
+        <Table percentage={percentage} backData={backData} />
       </div>
     </>
   );

@@ -6,15 +6,13 @@ td {
   /* width: 37px; */
 }
 
-.checkTable {
-  position: absolute;
-  top: 174px;
-  left: 269px;
-}
-
 table {
   border-collapse: collapse;
   /* caption-side:bottom; */
+}
+
+.checkTable {
+  height: 69px;
 }
 
 .box {
@@ -32,7 +30,7 @@ table {
 }
 
 .progressWrap {
-  width: 188px;
+  width: 186px;
   display: flex;
   justify-content: center;
   border: solid 1px #eef0f7;
