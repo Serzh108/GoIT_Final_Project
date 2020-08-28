@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './header.module.css';
 
-function Header() {
+function Header({ handleLogOut }) {
   return (
     <>
       <header>
@@ -43,7 +43,10 @@ function Header() {
               <button className={style.buttonNotification}></button>
             </li>
             <li>
-              <button className={style.buttonLogout}></button>
+              <button
+                onClick={handleLogOut}
+                className={style.buttonLogout}
+              ></button>
             </li>
           </ul>
         </div>
