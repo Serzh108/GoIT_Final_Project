@@ -1,0 +1,25 @@
+table,
+th,
+td {
+  /* padding: 10px; */
+  /* height: 65px; */
+  /* width: 37px; */
+}
+
+table {
+  border-collapse: collapse;
+  /* caption-side:bottom; */
+}
+
+.box {
+  width: 37px;
+  height: 65px;
+  border: solid 1px #eef0f7;
+  text-align: center;
+}
+.box:nth-child(7n) {
+  border-right-color: rgba(255, 108, 0, 0.3);
+}
+
+.clear {
+}
