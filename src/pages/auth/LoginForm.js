@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './LoginForm.module.css';
+// temp!!!
+import authOperations from './authOperations';
 
 class LoginForm extends Component {
   state = {
@@ -20,9 +23,11 @@ class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // запрос на бэк
-    console.log('this.state = ', this.state);
+    const { isemailOnFocus, ispasswordOnFocus, ...user } = this.state;
+    // console.log('this.state = ', user);
     this.reset();
+    // запрос на бэк
+    authOperations.login(user);
   };
 
   reset = () => {
@@ -77,7 +82,7 @@ class LoginForm extends Component {
           </button>
         </form>
         <p className={styles.form_description}>
-          Еще нет аккаунта?<a href="#"> Зарегистрироваться</a>
+          Еще нет аккаунта?<NavLink to="/"> Зарегистрироваться</NavLink>
         </p>
       </div>
     );

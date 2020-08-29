@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './RegistrationForm.module.css';
+// temp!!!
+import authOperations from './authOperations';
 
 class RegistrationForm extends Component {
   state = {
@@ -23,9 +26,15 @@ class RegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // запрос на бэк
-    console.log('this.state = ', this.state);
+    const {
+      isnameOnFocus,
+      isemailOnFocus,
+      ispasswordOnFocus,
+      ...user
+    } = this.state;
     this.reset();
+    // запрос на бэк
+    authOperations.registration(user);
   };
 
   reset = () => {
@@ -96,7 +105,10 @@ class RegistrationForm extends Component {
           </button>
         </form>
         <p className={styles.form_description}>
-          Уже есть аккаунт?<a href="#">Войти</a>
+          Уже есть аккаунт?{' '}
+          <NavLink to="/login" className="link">
+            Войти
+          </NavLink>
         </p>
       </div>
     );
