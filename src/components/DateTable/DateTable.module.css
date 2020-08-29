@@ -9,7 +9,9 @@ table {
   border: solid 1px #eef0f7;
   text-align: center;
 }
-.box:nth-child(7n) {
+.box:nth-child(8),
+.box:nth-child(15),
+.box:nth-child(22) {
   border-right-color: rgba(255, 108, 0, 0.3);
 }
 

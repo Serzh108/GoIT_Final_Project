@@ -41,6 +41,7 @@ const TableNew = ({ backData, habitId }) => {
           <td
             onClick={clickHabit}
             className={css.box}
+            style={{ background: '#50d2a00d' }}
             id={habitId + idx}
             key={uuidv4()}
           >
