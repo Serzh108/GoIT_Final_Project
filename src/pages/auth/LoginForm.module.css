@@ -10,23 +10,24 @@
 }
 .title {
   margin-bottom: 8px;
-  font-family: Montserrat;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 36px;
-  color: #181c27;
+  color: var(--main-text-color);
 }
 
 .title_description {
   margin-bottom: 19px;
   width: 369px;
-  font-family: Montserrat;
+  text-align: center;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
   line-height: 44px;
-  color: #181c27;
+  color: var(--main-text-color);
 }
 
 .form {
@@ -36,7 +37,7 @@
 .nameLabel {
   display: block;
   position: relative;
-  color: #a6acbe;
+  color: var(--second-text-color);
 }
 
 .nameLabel span {
@@ -52,13 +53,13 @@
   width: 430px;
   height: 51px;
   padding-left: 8px;
-  font-family: Montserrat;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 0.04em;
-  color: #181c27;
+  color: var(--main-text-color);
   border: none;
   border-bottom: 1px solid #eef0f6;
 }
@@ -72,7 +73,7 @@
 }
 
 .input::placeholder {
-  color: #a6acbe;
+  color: var(--second-text-color);
 }
 
 /* .input:hover::placeholder {
@@ -89,23 +90,27 @@
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: Montserrat;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: var(--main-font-size);
   line-height: 22px;
   letter-spacing: 0.02em;
   color: #fff;
-  background: #ff6c00;
+  background: var(--orange-color);
   box-shadow: 0px 10px 20px rgba(255, 108, 0, 0.16);
 }
 
 .form_description {
-  font-family: Montserrat;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
-  color: #181c27;
+  color: var(--main-text-color);
+}
+
+.link {
+  color: var(--main-text-color);
 }
