@@ -23,7 +23,6 @@ table {
   align-items: center;
   letter-spacing: 0.01em;
   font-family: Montserrat, sans-serif;
-  /* font-weight: bold; */
   position: relative;
   background-color: rgba(55, 59, 83, 0.9);
   color: #a6acbe;
@@ -47,7 +46,7 @@ table {
 
 .btn {
   width: 50px;
-  height: 50px;
+  height: 54px;
   background-color: #ff6c00;
   box-shadow: 0px 10px 20px rgba(255, 108, 0, 0.16);
   border: none;

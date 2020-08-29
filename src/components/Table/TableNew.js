@@ -4,10 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
-import Progress from '../Progress/Progress';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-// const percentage = 79;
 
 const TableNew = ({ backData, habitId }) => {
   const [doneHabit, setDoneHabit] = useState(null);

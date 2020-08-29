@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import css from '../SideBarHabits/SideBarHabits.module.css';
-import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import FormInputAddHabit from '../FormInputAddHabit/FormInputAddHabit';
+import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
+import css from './sideBarItem.module.css';
 
 const SideBarItem = ({ name }) => {
   const [isModalOpen, setisModalOpen] = useState(false);
-  const [newInput, setnewInput] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
 
   useEffect(() => {
@@ -32,10 +29,6 @@ const SideBarItem = ({ name }) => {
     setisModalOpen(false);
   };
 
-  const addHabit = () => {
-    setnewInput(true);
-  };
-
   const showButtons = () => {
     setshowBtns(true);
   };
@@ -51,12 +44,6 @@ const SideBarItem = ({ name }) => {
         onMouseOver={showButtons}
         onMouseLeave={hideButtons}
       >
-        {name === 'Привычки' && (
-          <button onClick={addHabit} className={css.btn}>
-            <AddIcon style={{ color: 'white' }}></AddIcon>
-          </button>
-        )}
-
         {name}
         {showBtns && (
           <div className={css.iconsWrap}>
@@ -71,17 +58,6 @@ const SideBarItem = ({ name }) => {
         )}
       </td>
       {isModalOpen && <DeleteHabitModal closeModal={closeModal} />}
-      {/* {newInput && (
-            <tr className={css.habitWrap}>
-              <td
-              // className={css.name}
-              // onMouseOver={showButtons}
-              // onMouseLeave={hideButtons}
-              >
-                <FormInputAddHabit />
-              </td>
-            </tr>
-          )} */}
     </>
   );
 };

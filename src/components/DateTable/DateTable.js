@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './DateTable.module.css';
-import SideBarItem from '../SideBarItem/SideBarItem';
 import { v4 as uuidv4 } from 'uuid';
 
 // import Table from '../Table/Table';
@@ -15,7 +14,7 @@ const DateTable = ({ backData }) => {
     const currentDate = `${data}.${month}`;
 
     return (
-      <td className={css.box}>
+      <td key={uuidv4()} className={css.box}>
         <div className={css.week}>{day}</div>
         <div className={css.date}>{currentDate}</div>
       </td>
