@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './header.module.css';
+import ExitModal from '../ExitModal/ExitModal';
+import Modal from '../Modal/Modal';
 
 function Header({ handleLogOut, name, total }) {
+  const [isExit, setisExit] = useState(false);
+
+  useEffect(() => {
+    const handleEsc = event => {
+      if (event.keyCode === 27) {
+        setisExit(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  const showModalToExit = () => {
+    setisExit(true);
+    console.log('isExit', isExit);
+  };
+
+  const closeModal = () => {
+    setisExit(false);
+  };
   return (
     <>
       <header>
@@ -44,13 +69,16 @@ function Header({ handleLogOut, name, total }) {
             </li>
             <li>
               <button
-                onClick={handleLogOut}
+                onClick={showModalToExit}
+                // onClick={showModalToExit}
+                // isExit={isExit}
                 className={style.buttonLogout}
               ></button>
             </li>
           </ul>
         </div>
       </header>
+      {isExit && <ExitModal closeModal={closeModal} />}
     </>
   );
 }
