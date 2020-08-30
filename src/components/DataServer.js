@@ -226,8 +226,36 @@ const DataServer = {
       ], // 21
       efficiency: '100', // считает бек или фронт?
     },
+    {
+      habitId: 'fdfsfsdf123212341409',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        null,
+        true,
+        null,
+        null,
+        null,
+        false,
+        null,
+      ], // 21
+      efficiency: '65', // считает бек или фронт?
+    },
     // {
-    //   habitId: 'fdfsfsdf123212341409',
+    //   habitId: 'fdfsfsdf123212341410',
     //   name: 'eat meat',
     //   data: [
     //     true,
@@ -255,7 +283,7 @@ const DataServer = {
     //   efficiency: '65', // считает бек или фронт?
     // },
     // {
-    //   habitId: 'fdfsfsdf123212341410',
+    //   habitId: 'fdfsfsdf123212341411',
     //   name: 'eat meat',
     //   data: [
     //     true,

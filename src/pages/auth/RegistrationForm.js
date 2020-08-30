@@ -4,6 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './RegistrationForm.module.css';
 // temp!!!
 import authOperations from './authOperations';
+import { css } from '@emotion/core';
+import RingLoader from 'react-spinners/RingLoader';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 class RegistrationForm extends Component {
   state = {
@@ -13,6 +21,7 @@ class RegistrationForm extends Component {
     isnameOnFocus: false,
     isemailOnFocus: false,
     ispasswordOnFocus: false,
+    isLoading: false,
   };
   // ============= temp!!! =========
   nameInputId = uuidv4();
@@ -26,6 +35,9 @@ class RegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({
+      isLoading: true,
+    });
     const {
       isnameOnFocus,
       isemailOnFocus,
@@ -34,7 +46,10 @@ class RegistrationForm extends Component {
     } = this.state;
     this.reset();
     // запрос на бэк
-    authOperations.registration(user);
+    authOperations.registration(user).then(() => {
+      console.log('this.state.isLoading', this.state.isLoading);
+      this.setState({ isLoading: false });
+    });
   };
 
   reset = () => {
@@ -58,6 +73,16 @@ class RegistrationForm extends Component {
           Попробуй прокачать 3 привычки бесплатно, мы знаем ты можешь!
         </p>
         <form onSubmit={this.handleSubmit} className={styles.form}>
+          {this.state.isLoading && (
+            <div className="sweet-loading">
+              <RingLoader
+                css={override}
+                size={35}
+                color={'#ff6c00'}
+                loading={this.state.loading}
+              />
+            </div>
+          )}
           <label htmlFor={this.nameInputId} className={styles.nameLabel}>
             <input
               value={this.state.name}
@@ -106,7 +131,7 @@ class RegistrationForm extends Component {
         </form>
         <p className={styles.form_description}>
           Уже есть аккаунт?{' '}
-          <NavLink to="/login" className="link">
+          <NavLink activeClassName="grey" to="/login" className="link">
             Войти
           </NavLink>
         </p>
