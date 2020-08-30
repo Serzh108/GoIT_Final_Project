@@ -9,6 +9,7 @@ table {
   border: solid 1px #eef0f7;
   text-align: center;
 }
+
 .box:nth-child(8),
 .box:nth-child(15),
 .box:nth-child(22) {
@@ -35,4 +36,5 @@ table {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   color: #181c27;
+  padding: 0 20px;
 }

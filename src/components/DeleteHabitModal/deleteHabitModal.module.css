@@ -1,15 +1,10 @@
 .wrap {
-  /* position: relative; */
-  background: rgba(77, 77, 77, 0.5);
-  position: absolute;
-  /* width: 280px;
-  height: 265px; */
+  background: rgba(77, 77, 77, 0.7);
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 11px;
-  margin: 0 auto;
   display: flex;
   align-items: center;
 }
@@ -41,20 +36,22 @@
   font-family: Montserrat, sans-serif;
 }
 
-.cancel {
+.delete {
   font-weight: bold;
   border: none;
   background: none;
   margin-right: 10px;
   color: #a6acbe;
+  cursor: pointer;
 }
 
-.delete {
+.cancel {
   font-weight: bold;
   border: none;
   background: none;
   margin-left: 10px;
   color: #ff6c00;
+  cursor: pointer;
 }
 
 .slash {
