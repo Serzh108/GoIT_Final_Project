@@ -1,9 +1,9 @@
 .wrap {
-  width: 280px;
-  height: 265px;
-  position: relative;
+  /* position: relative; */
   background: rgba(77, 77, 77, 0.5);
   position: absolute;
+  /* width: 280px;
+  height: 265px; */
   top: 0;
   left: 0;
   width: 100%;

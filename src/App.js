@@ -1,32 +1,17 @@
 import React from 'react';
-import logo from './assets/images/logo.png';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import SideBarHabits from './components/SideBarHabits/SideBarHabits';
 import RegistrationPage from './pages/auth/RegistrationPage';
-import ExitModal from './components/ExitModal/ExitModal';
-import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
-import Table from './components/Table/Table';
-import DateTable from './components/DateTable/DateTable';
-import MainTable from './components/MainTable/MainTable';
+import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
+
 const App = () => {
   return (
-    <>
-      <StatisticsPage />
-      {/* <DeleteHabitModal/>
- <ExitModal/> */}
-      {/* <MainTable /> */}
-      {/* <Table/> */}
-      {/* <SideBarHabits /> */}
-      {/* <div className="App">
-<header className="App-header">
-<img src={logo} className="App-logo" alt="logo" />
-<p>GoIT Bootcamp19 Final project</p>
-  <RegistrationPage />
-  // <LoginPage />
- </header>
- </div> */}
-    </>
+    <Switch>
+      <Route path="/" exact component={RegistrationPage} />
+      <Route path="/login" exact component={LoginPage} />
+      <Route path="/statisticsPage" exact component={StatisticsPage} />
+    </Switch>
   );
 };
 

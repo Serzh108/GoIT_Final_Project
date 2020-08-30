@@ -7,7 +7,7 @@ import FormInputAddHabit from '../FormInputAddHabit/FormInputAddHabit';
 import EditIcon from '@material-ui/icons/Edit';
 import SideBarItem from '../SideBarItem/SideBarItem';
 
-const SideBarHabits = () => {
+const SideBarHabits = ({ name }) => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [newInput, setnewInput] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
@@ -51,13 +51,13 @@ const SideBarHabits = () => {
         <thead></thead>
         <tbody className={css.side}>
           <tr>
-            <SideBarItem />
-            {/* <td className={css.habits}>
+            {/* <SideBarItem /> */}
+            <td className={css.habits}>
               <button onClick={addHabit} className={css.btn}>
                 <AddIcon style={{ color: 'white' }}></AddIcon>
               </button>
               Привычки
-            </td> */}
+            </td>
           </tr>
           <tr className={css.habitWrap}>
             <td
@@ -65,7 +65,7 @@ const SideBarHabits = () => {
               onMouseLeave={hideButtons}
               className={css.name}
             >
-              Workout
+              {name}
               {showBtns && (
                 <div className={css.iconsWrap}>
                   <EditIcon
@@ -99,6 +99,7 @@ const SideBarHabits = () => {
                 </div>
               )}
             </td>
+            {/* <td>Hello</td> */}
           </tr>
           <tr className={css.habitWrap}>
             <td

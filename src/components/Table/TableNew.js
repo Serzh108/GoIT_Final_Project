@@ -4,26 +4,23 @@ import { v4 as uuidv4 } from 'uuid';
 
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
-import Progress from '../Progress/Progress';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-// const percentage = 79;
 
-const Table = ({ backData, percentage }) => {
+const TableNew = ({ backData, habitId }) => {
   const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
     console.log(e.currentTarget.id);
   };
 
-  const play = item => {
+  const play = (item, idx) => {
     switch (item) {
       case null:
         return (
           <td
             onClick={clickHabit}
             className={css.box}
-            id={uuidv4()}
+            id={habitId + idx}
             key={uuidv4()}
           ></td>
         );
@@ -33,7 +30,7 @@ const Table = ({ backData, percentage }) => {
             onClick={clickHabit}
             className={css.box}
             style={{ backgroundColor: '#ff4c610d' }}
-            id={uuidv4()}
+            id={habitId + idx}
             key={uuidv4()}
           >
             <ClearIcon style={{ color: '#FF4C61' }}></ClearIcon>
@@ -44,7 +41,8 @@ const Table = ({ backData, percentage }) => {
           <td
             onClick={clickHabit}
             className={css.box}
-            id={uuidv4()}
+            style={{ background: '#50d2a00d' }}
+            id={habitId + idx}
             key={uuidv4()}
           >
             <DoneIcon style={{ color: '#33D69F' }}></DoneIcon>
@@ -56,7 +54,7 @@ const Table = ({ backData, percentage }) => {
           <td
             onClick={clickHabit}
             className={css.box}
-            id={uuidv4()}
+            id={habitId + idx}
             key={uuidv4()}
           ></td>
         );
@@ -65,13 +63,13 @@ const Table = ({ backData, percentage }) => {
 
   return (
     <>
-      <table className={css.checkTable}>
+      {/* <table className={css.checkTable}>
         <thead></thead>
         <tbody>
-          <tr className={css.checkWrap}>
-            {backData.map(item => play(item))}
-            <td className={css.progressWrap}>
-              {/* {percentage <= 79 ? (
+          <tr className={css.checkWrap}> */}
+      {backData.map((item, idx) => play(item, idx))}
+      {/* <td className={css.progressWrap}>
+              {percentage <= 79 ? (
                 <div style={{ paddingTop: '10px', width: '50px' }}>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -80,7 +78,7 @@ const Table = ({ backData, percentage }) => {
                       textSize: '30px',
                     })}
                     value={percentage}
-                    text={`${percentage}`}
+                    text={`${percentage}%`}
                   />
                 </div>
               ) : (
@@ -92,18 +90,16 @@ const Table = ({ backData, percentage }) => {
                       textSize: '30px',
                     })}
                     value={percentage}
-                    text={`${percentage}`}
+                    text={`${percentage}%`}
                   />
                 </div>
-              )} */}
-
-              {/* <Progress/> */}
-            </td>
-          </tr>
+              )}
+            </td> */}
+      {/* </tr>
         </tbody>
-      </table>
+      </table> */}
     </>
   );
 };
 
-export default Table;
+export default TableNew;

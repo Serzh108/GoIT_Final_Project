@@ -1,4 +1,6 @@
-/* @import 'styles/fonts'; */
+@import './fonts.css';
+@import './vars.css';
+
 html {
   box-sizing: border-box;
 }
@@ -15,7 +17,7 @@ body {
   margin: 0 auto;
   background-color: #fff;
   color: #181c27;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
 }
 
 img {
