@@ -14,7 +14,11 @@ const registration = async userData => {
     );
     console.log('responseRegistration = ', responseRegistration);
     console.log('responseRegistration.status = ', responseRegistration.status);
-    console.log('responseRegistration.data = ', responseRegistration.data);
+    console.log('responseRegistration.config = ', responseRegistration.config);
+    console.log(
+      'responseRegistration.config.data = ',
+      JSON.parse(responseRegistration.config.data).name,
+    );
   } catch (error) {
     console.log('error', error);
   }
