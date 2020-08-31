@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import css from './Table.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,7 +7,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import 'react-circular-progressbar/dist/styles.css';
 
 const TableNew = ({ backData, habitId }) => {
-  const [doneHabit, setDoneHabit] = useState(null);
+  // const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
     console.log(e.currentTarget.id);
