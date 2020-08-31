@@ -3,8 +3,7 @@ ToDo:
 1. Написать reducers/operations: 
 registration: в стейт - записать name
 login: записать в стейт токен, isAuth: true 
-logOut: state: isAuth: false
+logOut: state: isAuth: false, token: '',
 
-2. Сделать модалку нормально в конце-то концов! done
-3. Спинер almost done
-4. Подключить redux persist
+
+2. Спинер almost done (заменить на большой)

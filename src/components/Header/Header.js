@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from './header.module.css';
 import ExitModal from '../ExitModal/ExitModal';
-import Modal from '../Modal/Modal';
 
 function Header({ handleLogOut, name, total }) {
   const [isExit, setisExit] = useState(false);

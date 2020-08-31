@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './RegistrationForm.module.css';
 // temp!!!
-import authOperations from './authOperations';
+import authOperations from '../../redux/auth/authOperations';
 import { css } from '@emotion/core';
 import RingLoader from 'react-spinners/RingLoader';
 
@@ -91,7 +91,9 @@ class RegistrationForm extends Component {
               type="name"
               id={this.nameInputId}
               className={styles.input}
-              placeholder={!this.state.isnameOnFocus ? 'Имя' : ''}
+              placeholder={
+                !this.state.isnameOnFocus ? 'Имя: от 2 до 8 символов' : ''
+              }
               onChange={this.handleChange}
               onFocus={this.inputFocused}
               onBlur={this.inputBlured}
@@ -119,7 +121,11 @@ class RegistrationForm extends Component {
               type="password"
               id={this.passwordInputId}
               className={styles.input}
-              placeholder={!this.state.ispasswordOnFocus ? 'Пароль' : ''}
+              placeholder={
+                !this.state.ispasswordOnFocus
+                  ? 'Пароль: минимум 6 символов'
+                  : ''
+              }
               onChange={this.handleChange}
               onFocus={this.inputFocused}
               onBlur={this.inputBlured}

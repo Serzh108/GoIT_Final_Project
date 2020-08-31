@@ -6,27 +6,19 @@ const state = {
   isAuth: false,
 };
 
-// export const authSlice = createSlice({
-//   name: 'auth',
-//   initialState: state,
-//   reducers: {
-//     authRegister: (state, { payload }) => ({
-//       userName: payload,
-//     }),
-//     // authSignIn: (state, {payload}) => ({
-//     //     userName: payload.userName,
-
-//     // })
-//   },
-// });
-
 export const authSlice = createSlice({
   name: 'auth',
   initialState: state,
   reducers: {
+    authRegister: (state, { payload }) => console.log('111', 111),
+    // (
+
+    //   {
+    //     userName: payload,
+    //   },
+    // ),
     authSignIn: (state, { payload }) => ({
-      userName: payload.userName,
-      access_token: payload.token,
+      access_token: payload.access_token,
       isAuth: true,
     }),
   },

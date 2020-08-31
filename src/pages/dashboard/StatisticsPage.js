@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'react-circular-progressbar/dist/styles.css';
 import style from './statisticsPage.module.css';
 import Header from '../../components/Header/Header';

@@ -3,13 +3,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import css from './sideBarItem.module.css';
-import ExitModal from '../ExitModal/ExitModal';
-import Modal from '../Modal/Modal';
 
 const SideBarItem = ({ name }) => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
-  const [isDelete, setisDelete] = useState(false);
+  // const [isDelete, setisDelete] = useState(false);
 
   useEffect(() => {
     const handleEsc = event => {
@@ -39,12 +37,6 @@ const SideBarItem = ({ name }) => {
 
   const hideButtons = () => {
     setshowBtns(false);
-  };
-
-  const showModalToDelete = e => {
-    setisDelete(true);
-    console.log('isDelete', isDelete);
-    console.log('e.target', e.target);
   };
 
   return (
