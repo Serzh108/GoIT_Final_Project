@@ -44,7 +44,11 @@ const login = userData => async dispatch => {
   console.log('login finished!');
 };
 
-export default { registration, login };
+const signOut = () => async dispatch => {
+  dispatch(authSlice.actions.authSignOut());
+};
+
+export default { registration, login, signOut };
 
 // Heroku host: https://api-habit.herokuapp.com/
 // Auth

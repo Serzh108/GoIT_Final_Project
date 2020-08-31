@@ -22,7 +22,7 @@ const initialState = {
   isLoading: false,
 };
 
-function LoginForm() {
+function LoginForm({ history }) {
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
   // class RegistrationForm extends Component {
@@ -62,6 +62,7 @@ function LoginForm() {
     //   this.setState({ isLoading: false });
     // });
     reset();
+    history.replace('/home');
   };
 
   const reset = () => {
@@ -123,7 +124,7 @@ function LoginForm() {
           {state.ispasswordOnFocus ? <span>Пароль</span> : null}
         </label>
         <button type="submit" className={styles.registration_btn}>
-          Зарегистрироваться
+          Войти
         </button>
       </form>
 
