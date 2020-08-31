@@ -19,7 +19,7 @@ import { authSlice } from './auth/authReducer';
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: ['']
+  whitelist: ['access_token', 'userName'],
 };
 const middleware = [
   ...getDefaultMiddleware({
