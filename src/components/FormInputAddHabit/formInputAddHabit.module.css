@@ -6,6 +6,10 @@
   font-family: Montserrat, sans-serif;
 }
 
+.input:focus {
+  outline-color: #ff6c00;
+}
+
 .input::placeholder {
   color: #a6acbe;
 }

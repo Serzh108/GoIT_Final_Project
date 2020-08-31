@@ -1,11 +1,9 @@
-import React from 'react';
-
 const DataServer = {
   userName: 'Natasha',
   total: 360,
   habits: [
     {
-      habitId: 'dsdad121321321dadasd',
+      habitId: 'dsdad121321321dadasd01',
       name: 'workout',
       data: [
         null,
@@ -33,7 +31,7 @@ const DataServer = {
       efficiency: '50', // считает бек или фронт?
     },
     {
-      habitId: 'fdfsfsdf123212313',
+      habitId: 'fdfsfsdf12321231302',
       name: 'dance every day',
       data: [
         true,
@@ -61,7 +59,7 @@ const DataServer = {
       efficiency: '70', // считает бек или фронт?
     }, // привычек максимум 10шт
     {
-      habitId: 'fdfsfsdf123212515',
+      habitId: 'fdfsfsdf12321251503',
       name: 'drink beer',
       data: [
         true,
@@ -86,10 +84,150 @@ const DataServer = {
         null,
         true,
       ], // 21
-      efficiency: '85', // считает бек или фронт?
+      efficiency: '21', // считает бек или фронт?
     },
     {
-      habitId: 'fdfsfsdf1232123414',
+      habitId: 'fdfsfsdf123212341404',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        null,
+        true,
+        null,
+        null,
+        null,
+        false,
+        null,
+      ], // 21
+      efficiency: '84', // считает бек или фронт?
+    },
+    {
+      habitId: 'fdfsfsdf123212341405',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        null,
+        null,
+        null,
+        false,
+        null,
+      ], // 21
+      efficiency: '86', // считает бек или фронт?
+    },
+    {
+      habitId: 'fdfsfsdf123212341406',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false,
+        false,
+        null,
+        true,
+        null,
+        null,
+        null,
+        false,
+        null,
+      ], // 21
+      efficiency: '61', // считает бек или фронт?
+    },
+    {
+      habitId: 'fdfsfsdf123212341407',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        null,
+        true,
+        null,
+        false,
+        false,
+        false,
+        null,
+      ], // 21
+      efficiency: '90', // считает бек или фронт?
+    },
+    {
+      habitId: 'fdfsfsdf123212341408',
+      name: 'eat meat',
+      data: [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        null,
+        true,
+        null,
+        null,
+        null,
+        false,
+        null,
+      ], // 21
+      efficiency: '100', // считает бек или фронт?
+    },
+    {
+      habitId: 'fdfsfsdf123212341409',
       name: 'eat meat',
       data: [
         true,
@@ -115,7 +253,63 @@ const DataServer = {
         null,
       ], // 21
       efficiency: '65', // считает бек или фронт?
-    }, // привычек максимум 10шт
+    },
+    // {
+    //   habitId: 'fdfsfsdf123212341410',
+    //   name: 'eat meat',
+    //   data: [
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     false,
+    //     false,
+    //     false,
+    //     false,
+    //     false,
+    //     null,
+    //     true,
+    //     null,
+    //     null,
+    //     null,
+    //     false,
+    //     null,
+    //   ], // 21
+    //   efficiency: '65', // считает бек или фронт?
+    // },
+    // {
+    //   habitId: 'fdfsfsdf123212341411',
+    //   name: 'eat meat',
+    //   data: [
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     true,
+    //     false,
+    //     false,
+    //     false,
+    //     false,
+    //     false,
+    //     null,
+    //     true,
+    //     null,
+    //     null,
+    //     null,
+    //     false,
+    //     null,
+    //   ], // 21
+    //   efficiency: '65', // считает бек или фронт?
+    // }
   ],
 };
 

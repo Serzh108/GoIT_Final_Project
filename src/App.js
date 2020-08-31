@@ -1,28 +1,22 @@
-import React from 'react';
-import logo from './assets/images/logo.png';
+import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './App.css';
-import SideBarHabits from './components/SideBarHabits/SideBarHabits';
 import RegistrationPage from './pages/auth/RegistrationPage';
-import ExitModal from './components/ExitModal/ExitModal';
-import DeleteHabitModal from './components/DeleteHabitModal/DeleteHabitModal';
-import Table from './components/Table/Table';
-import DateTable from './components/DateTable/DateTable';
-import MainTable from './components/MainTable/MainTable';
+import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
-const App = () => {
-  return (
-    <>
-      <StatisticsPage />
-      {/* <DeleteHabitModal/>
- <ExitModal/> */}
-      {/* <MainTable /> */}
-      {/* <Table/> */}
-      {/* <SideBarHabits /> */}
 
-      {/* <RegistrationPage /> */}
-      {/* <LoginPage /> */}
-    </>
-  );
+const App = () => {
+  const { isAuth } = useSelector(state => state.auth);
+  if (!isAuth) {
+    return (
+      <Switch>
+        <Route path="/" exact component={RegistrationPage} />
+        <Route path="/login" exact component={LoginPage} />
+      </Switch>
+    );
+  }
+  return <StatisticsPage />;
 };
 
 export default App;

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import css from '../SideBarHabits/SideBarHabits.module.css';
-import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import FormInputAddHabit from '../FormInputAddHabit/FormInputAddHabit';
+import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
+import css from './sideBarItem.module.css';
+import ExitModal from '../ExitModal/ExitModal';
+import Modal from '../Modal/Modal';
 
 const SideBarItem = ({ name }) => {
   const [isModalOpen, setisModalOpen] = useState(false);
-  const [newInput, setnewInput] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
+  const [isDelete, setisDelete] = useState(false);
 
   useEffect(() => {
     const handleEsc = event => {
@@ -30,10 +30,7 @@ const SideBarItem = ({ name }) => {
 
   const closeModal = () => {
     setisModalOpen(false);
-  };
-
-  const addHabit = () => {
-    setnewInput(true);
+    // console.log('222', 222)
   };
 
   const showButtons = () => {
@@ -44,6 +41,12 @@ const SideBarItem = ({ name }) => {
     setshowBtns(false);
   };
 
+  const showModalToDelete = e => {
+    setisDelete(true);
+    console.log('isDelete', isDelete);
+    console.log('e.target', e.target);
+  };
+
   return (
     <>
       <td
@@ -51,12 +54,6 @@ const SideBarItem = ({ name }) => {
         onMouseOver={showButtons}
         onMouseLeave={hideButtons}
       >
-        {name === 'Привычки' && (
-          <button onClick={addHabit} className={css.btn}>
-            <AddIcon style={{ color: 'white' }}></AddIcon>
-          </button>
-        )}
-
         {name}
         {showBtns && (
           <div className={css.iconsWrap}>
@@ -71,17 +68,6 @@ const SideBarItem = ({ name }) => {
         )}
       </td>
       {isModalOpen && <DeleteHabitModal closeModal={closeModal} />}
-      {/* {newInput && (
-            <tr className={css.habitWrap}>
-              <td
-              // className={css.name}
-              // onMouseOver={showButtons}
-              // onMouseLeave={hideButtons}
-              >
-                <FormInputAddHabit />
-              </td>
-            </tr>
-          )} */}
     </>
   );
 };
