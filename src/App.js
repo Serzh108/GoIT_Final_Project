@@ -13,9 +13,11 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
+        {/* <Route path="/statisticsPage" exact component={StatisticsPage} /> */}
       </Switch>
     );
   }
+  // return <Route path="/home" exact component={StatisticsPage} />;
   return <StatisticsPage />;
 };
 

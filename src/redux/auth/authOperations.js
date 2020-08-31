@@ -9,8 +9,7 @@ axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 const registrationEndpoint = '/auth/registration';
 const loginEndpoint = '/auth/login';
 
-const registration = async userData => {
-  // const dispatch = useDispatch();
+const registration = userData => async dispatch => {
   console.log('registration started!');
   try {
     const responseRegistration = await axios.post(
@@ -21,8 +20,9 @@ const registration = async userData => {
     console.log('responseRegistration.status = ', responseRegistration.status);
     console.log('responseRegistration.data = ', responseRegistration.data);
     if (responseRegistration.status === 201) {
-      //  dispatch(authSlice.actions.authRegister({
-      //  }))
+      const name = JSON.parse(responseRegistration.config.data).name;
+
+      dispatch(authSlice.actions.authRegister(name));
     }
   } catch (error) {
     console.log('error', error);
@@ -30,13 +30,14 @@ const registration = async userData => {
   console.log('registration finished!');
 };
 
-const login = async userData => {
+const login = userData => async dispatch => {
   console.log('login started!');
   try {
     const responseLogin = await axios.post(loginEndpoint, userData);
     console.log('responseLogin = ', responseLogin);
     console.log('status = ', responseLogin.status);
     console.log('access_token = ', responseLogin.data.access_token);
+    dispatch(authSlice.actions.authSignIn(responseLogin.data.access_token));
   } catch (error) {
     console.log('error', error);
   }

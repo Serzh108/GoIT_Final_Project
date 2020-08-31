@@ -10,15 +10,14 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: state,
   reducers: {
-    authRegister: (state, { payload }) => console.log('111', 111),
-    // (
-
-    //   {
-    //     userName: payload,
-    //   },
-    // ),
+    authRegister: (state, { payload }) => ({
+      ...state,
+      userName: payload,
+    }),
     authSignIn: (state, { payload }) => ({
-      access_token: payload.access_token,
+      ...state,
+      // userName: state.userName,
+      access_token: payload,
       isAuth: true,
     }),
   },
