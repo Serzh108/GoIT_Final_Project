@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import 'react-circular-progressbar/dist/styles.css';
 import style from './statisticsPage.module.css';
 import Header from '../../components/Header/Header';
@@ -13,6 +14,9 @@ import SideBarHead from '../../components/SideBarHead/SideBarHead';
 
 function StatisticsPage() {
   const [newInput, setnewInput] = useState(false);
+
+  const { userName } = useSelector(state => state.auth);
+  console.log(userName);
 
   const habitsLength = DataServer.habits.length;
 
@@ -34,7 +38,7 @@ function StatisticsPage() {
     <>
       <main className={style.mainContainer}>
         <Header
-          name={DataServer.userName}
+          name={userName}
           total={DataServer.total}
           handleLogOut={handleLogOut}
         />
