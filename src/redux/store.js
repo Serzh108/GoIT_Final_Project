@@ -16,13 +16,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/authReducer';
-
 const persistConfig = {
-  key: 'trecker',
+  key: 'root',
   storage,
   // whitelist: ['']
 };
-
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -31,16 +29,13 @@ const middleware = [
   }),
   logger,
 ];
-
 const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
-  middleware,
 });
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware,
+  // middleware: [...getDefaultMiddleware({ serializableCheck: false })]
 });
-
 export const persistor = persistStore(store);
