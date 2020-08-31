@@ -42,6 +42,7 @@ class RegistrationForm extends Component {
       isnameOnFocus,
       isemailOnFocus,
       ispasswordOnFocus,
+      isLoading,
       ...user
     } = this.state;
     this.reset();

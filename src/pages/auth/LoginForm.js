@@ -35,7 +35,12 @@ class LoginForm extends Component {
     this.setState({
       isLoading: true,
     });
-    const { isemailOnFocus, ispasswordOnFocus, ...user } = this.state;
+    const {
+      isemailOnFocus,
+      ispasswordOnFocus,
+      isLoading,
+      ...user
+    } = this.state;
     // console.log('this.state = ', user);
     this.reset();
     // запрос на бэк
