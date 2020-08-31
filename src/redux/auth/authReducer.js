@@ -20,5 +20,11 @@ export const authSlice = createSlice({
       access_token: payload,
       isAuth: true,
     }),
+    authSignOut: (state, { payload }) => ({
+      // userName: null,
+      ...state,
+      isAuth: false,
+      access_token: null,
+    }),
   },
 });

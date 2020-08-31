@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './App.css';
 import RegistrationPage from './pages/auth/RegistrationPage';
@@ -15,12 +15,16 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
-        {/* <Route path="/statisticsPage" exact component={StatisticsPage} /> */}
+        <Redirect to="/login" />
       </Switch>
     );
   }
-  // return <Route path="/home" exact component={StatisticsPage} />;
-  return <StatisticsPage />;
+  return (
+    <Switch>
+      <Route exact path="/home" component={StatisticsPage} />
+      <Redirect to="/home" />
+    </Switch>
+  );
 };
 
 export default App;
