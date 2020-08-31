@@ -17,7 +17,8 @@ const App = () => {
       </Switch>
     );
   }
-  return <Route path="/home" exact component={StatisticsPage} />;
+  // return <Route path="/home" exact component={StatisticsPage} />;
+  return <StatisticsPage />;
 };
 
 export default App;
