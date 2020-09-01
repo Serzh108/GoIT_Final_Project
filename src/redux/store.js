@@ -16,6 +16,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/authReducer';
+import { habitsSlice } from './habits/habitsReducer';
+
 const persistConfig = {
   key: 'root',
   storage,
@@ -31,6 +33,7 @@ const middleware = [
 ];
 const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
+  [habitsSlice.name]: habitsSlice.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
