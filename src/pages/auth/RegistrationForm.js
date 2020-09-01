@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import LoadingOverlay from 'react-loading-overlay';
 import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 // temp!!!
@@ -25,6 +27,7 @@ const initialState = {
 };
 
 function RegistrationForm() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
   // class RegistrationForm extends Component {
@@ -65,12 +68,9 @@ function RegistrationForm() {
     console.log('user', user);
     console.log('authOperations.registration', authOperations.registration());
 
-    dispatch(authOperations.registration(user));
-    // .then(() => {
-    //   console.log('this.state.isLoading', this.state.isLoading);
-    //   this.setState({ isLoading: false });
-    // });
+    dispatch(authOperations.registration(user)) && history.replace();
     reset();
+    // history.replace('/login')
   };
 
   const reset = () => {
@@ -95,12 +95,17 @@ function RegistrationForm() {
       <form onSubmit={handleSubmit} className={styles.form}>
         {state.isLoading && (
           <div className="sweet-loading">
-            <RingLoader
+            {/* <RingLoader
               css={override}
               size={35}
               color={'#ff6c00'}
               loading={state.loading}
-            />
+            /> */}
+            <LoadingOverlay
+              active={state.isLoading}
+              spinner
+              text="Секундочку..."
+            ></LoadingOverlay>
           </div>
         )}
         <label htmlFor={nameInputId} className={styles.nameLabel}>
