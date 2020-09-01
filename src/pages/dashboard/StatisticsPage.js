@@ -13,26 +13,35 @@ import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHa
 import SideBarHead from '../../components/SideBarHead/SideBarHead';
 
 function StatisticsPage() {
+    const [isEdit, setisEdit] = useState(false);
+
   const [newInput, setnewInput] = useState(false);
 
   const { userName } = useSelector(state => state.auth);
-  console.log(userName);
+  // console.log(userName);
 
   const habitsLength = DataServer.habits.length;
 
   const addHabit = () => {
-    if (habitsLength !== 10) {
+    if (habitsLength < 10) {
       setnewInput(true);
     } else {
       setnewInput(false);
     }
   };
 
-  const handleLogOut = e => {
-    console.log('LogOut');
+  const handleEsc = e => {
+    if (e.keyCode === 27) {
+      setnewInput(false);
+    } 
   };
 
-  // console.log('DataServer', DataServer.userName);
+  useEffect(() => {
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
 
   return (
     <>
@@ -40,7 +49,7 @@ function StatisticsPage() {
         <Header
           name={userName}
           total={DataServer.total}
-          handleLogOut={handleLogOut}
+          // handleLogOut={handleLogOut}
         />
         <div className={style.sideBar}>
           <div className={style.date}>
@@ -56,7 +65,7 @@ function StatisticsPage() {
                 </tr>
                 {DataServer.habits.map(item => (
                   <tr key={item.habitId}>
-                    <SideBarItem name={item.name} />
+                    <SideBarItem isEdit={isEdit} setisEdit={setisEdit} name={item.name} habitId={item.habitId}/>
                     <TableNew backData={item.data} habitId={item.habitId} />
                     <td className={css.progressWrap}>
                       {item.efficiency <= 79 ? (
@@ -93,7 +102,7 @@ function StatisticsPage() {
                 {newInput && (
                   <tr className={css.habitWrap}>
                     <td>
-                      <FormInputAddHabit />
+                      <FormInputAddHabit setnewInput={setnewInput}/>
                     </td>
                   </tr>
                 )}

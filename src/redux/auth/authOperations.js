@@ -1,15 +1,15 @@
-import React from 'react';
 import axios from 'axios';
-// import {useDispatch} from 'react-redux'
 import { authSlice } from './authReducer';
-// import {useDispatch} from 'react'
 
 axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 
 const registrationEndpoint = '/auth/registration';
 const loginEndpoint = '/auth/login';
 
+// const history = useHistory()
+
 const registration = userData => async dispatch => {
+
   console.log('registration started!');
   try {
     const responseRegistration = await axios.post(
@@ -23,6 +23,8 @@ const registration = userData => async dispatch => {
       const name = JSON.parse(responseRegistration.config.data).name;
 
       dispatch(authSlice.actions.authRegister(name));
+      
+      // history.replace('/login')
     }
   } catch (error) {
     console.log('error', error);
