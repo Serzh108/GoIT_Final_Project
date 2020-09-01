@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import style from './header.module.css';
+import ExitModal from '../ExitModal/ExitModal';
+import authOperations from '../../redux/auth/authOperations';
 
 function Header({ handleLogOut, name, total }) {
+  const [isExit, setisExit] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    const handleEsc = event => {
+      if (event.keyCode === 27) {
+        setisExit(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  const showModalToExit = () => {
+    setisExit(true);
+    console.log('isExit', isExit);
+  };
+
+  const closeModal = () => {
+    setisExit(false);
+  };
+
+  const signOut = () => {
+    dispatch(authOperations.signOut());
+    history.replace('/login');
+  };
   return (
     <>
       <header>
@@ -44,13 +79,17 @@ function Header({ handleLogOut, name, total }) {
             </li>
             <li>
               <button
-                onClick={handleLogOut}
+                // onClick={signOut}
+                onClick={showModalToExit}
+                // onClick={showModalToExit}
+                // isExit={isExit}
                 className={style.buttonLogout}
               ></button>
             </li>
           </ul>
         </div>
       </header>
+      {isExit && <ExitModal closeModal={closeModal} signOut={signOut} />}
     </>
   );
 }

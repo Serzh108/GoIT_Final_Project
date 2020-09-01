@@ -7,6 +7,7 @@ import css from './sideBarItem.module.css';
 const SideBarItem = ({ name }) => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
+  // const [isDelete, setisDelete] = useState(false);
 
   useEffect(() => {
     const handleEsc = event => {
@@ -27,6 +28,7 @@ const SideBarItem = ({ name }) => {
 
   const closeModal = () => {
     setisModalOpen(false);
+    // console.log('222', 222)
   };
 
   const showButtons = () => {

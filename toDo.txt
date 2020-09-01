@@ -1,0 +1,9 @@
+ToDo: 
+
+1. Написать reducers/operations: 
+registration: в стейт - записать name
+login: записать в стейт токен, isAuth: true 
+logOut: state: isAuth: false, token: '',
+
+
+2. Спинер almost done (заменить на большой)
