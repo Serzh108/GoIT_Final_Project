@@ -6,7 +6,7 @@ const state = {
   habits: [],
 };
 
-export const authSlice = createSlice({
+export const habitsSlice = createSlice({
   name: 'habits',
   initialState: state,
   reducers: {
@@ -25,10 +25,11 @@ export const authSlice = createSlice({
     }),
     updateHabitData: (state, { payload }) => ({
       ...state,
-      habits: 
+      habits: [...state.habits, payload],
     }),
     updateHabitName: (state, { payload }) => ({
       ...state,
+      habits: [...state.habits, payload],
     }),
   },
 });
