@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { authSlice } from './authReducer';
 
+import { notice, error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+
 axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 
 const registrationEndpoint = '/auth/registration';
@@ -9,7 +13,6 @@ const loginEndpoint = '/auth/login';
 // const history = useHistory()
 
 const registration = userData => async dispatch => {
-
   console.log('registration started!');
   try {
     const responseRegistration = await axios.post(
@@ -23,11 +26,19 @@ const registration = userData => async dispatch => {
       const name = JSON.parse(responseRegistration.config.data).name;
 
       dispatch(authSlice.actions.authRegister(name));
-      
+      notice({
+        title: 'Please confirm your email',
+        text: 'Check your email',
+      });
+
       // history.replace('/login')
     }
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+    console.log('error===', err.response.data);
   }
   console.log('registration finished!');
 };
