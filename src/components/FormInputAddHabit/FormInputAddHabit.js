@@ -20,8 +20,8 @@ const FormInputAddHabit = ({ setnewInput }) => {
     e.preventDefault();
     console.log('нас засабмитили:', newHabit);
     // dispatch(habitsOperations.createHabit(newHabit))
-    // dispatch(habitsOperations.createHabit(newHabit));
-    dispatch(habitsOperations.getHabit());
+    dispatch(habitsOperations.createHabit(newHabit));
+    // dispatch(habitsOperations.getHabit());
 
     // setnewHabit('');
     setnewInput(false);

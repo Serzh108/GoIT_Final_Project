@@ -37,7 +37,7 @@ const createHabit = newHabit => async (dispatch, getState) => {
 
 const deleteHabit = habitId => async dispatch => {
   console.log('delete started');
-  // const q = '5f4ebb1a98309b0017529b44'
+  // const q = '5f4ebddc98309b0017529b45'
   try {
     // const deletedHabit = await axios.delete(`/habits/${q}`);
     const deletedHabit = await axios.delete(`/habits/${habitId}`);
