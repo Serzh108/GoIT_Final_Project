@@ -8,6 +8,7 @@ const getHabit = newHabit => async (dispatch, getState) => {
   console.log('get started!');
   try {
     const responseGet = await axios.get('/habits');
+    console.log('data from bek', responseGet.data.habits);
     dispatch(habitsSlice.actions.getAllHabits(responseGet.data));
   } catch (err) {
     error({
