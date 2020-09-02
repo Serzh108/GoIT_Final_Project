@@ -28,7 +28,7 @@ const registration = userData => async dispatch => {
       dispatch(authSlice.actions.authRegister(name));
       notice({
         title: 'Please confirm your email',
-        text: 'Check your email',
+        text: 'Check your email (inbox or spam)',
       });
 
       // history.replace('/login')
