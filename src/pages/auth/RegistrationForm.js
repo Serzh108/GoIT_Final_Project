@@ -7,14 +7,19 @@ import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 // temp!!!
 import authOperations from '../../redux/auth/authOperations';
-import { css } from '@emotion/core';
-import RingLoader from 'react-spinners/RingLoader';
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+// import { notice} from '@pnotify/core';
+// import '@pnotify/core/dist/PNotify.css';
+// import '@pnotify/core/dist/BrightTheme.css';
+
+// import { css } from '@emotion/core';
+// import RingLoader from 'react-spinners/RingLoader';
+
+// const override = css`
+//   display: block;
+//   margin: 0 auto;
+//   border-color: red;
+// `;
 
 const initialState = {
   name: '',
@@ -70,6 +75,10 @@ function RegistrationForm() {
 
     dispatch(authOperations.registration(user)) && history.replace();
     reset();
+    // notice({
+    //   title: 'Please confirm your email',
+    //   text: 'Check your email',
+    // });
     // history.replace('/login')
   };
 

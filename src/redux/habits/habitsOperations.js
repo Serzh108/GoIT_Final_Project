@@ -1,6 +1,10 @@
 import axios from '../../api/axios';
 import { habitsSlice } from './habitsReducer';
 
+import { notice, error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
+
 const getHabit = newHabit => async (dispatch, getState) => {
   // const token = getState();
   // const tokenToSend = token.auth.access_token;
@@ -12,8 +16,13 @@ const getHabit = newHabit => async (dispatch, getState) => {
     console.log('responseGet.data = ', responseGet.data);
 
     dispatch(habitsSlice.actions.getAllHabits(responseGet.data));
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+
+    console.log('error', err);
   }
   console.log('get finished!');
 };
@@ -29,8 +38,13 @@ const createHabit = newHabit => async (dispatch, getState) => {
     console.log('responseCreate.data = ', responseCreate.data);
 
     dispatch(habitsSlice.actions.addHabit(responseCreate.data));
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+
+    console.log('error', err);
   }
   console.log('create finished!');
 };
@@ -48,8 +62,13 @@ const deleteHabit = habitId => async dispatch => {
       dispatch(habitsSlice.actions.deleteHabit(habitId));
       // dispatch(habitsSlice.actions.deleteHabit(q));
     }
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+
+    console.log('error', err);
   }
   console.log('delete finished!');
 };
@@ -63,24 +82,38 @@ const updateHabitName = (habit, id) => async dispatch => {
     });
     console.log('responseUpdate = ', updateHabit);
     console.log('responseUpdate.status = ', updateHabit.status);
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+
+    console.log('error', err);
   }
   console.log('update finished!');
 };
 
-const updateHabitData = () => async dispatch => {
+const updateHabitData = (id, data) => async dispatch => {
   console.log('data update started');
-  // try {
-  //   const updateHabit = await axios.patch('/habits', {
-  //     id,
-  //     name: habit,
-  //   });
-  //   console.log('responseUpdate = ', updateHabit);
-  //   console.log('responseUpdate.status = ', updateHabit.status);
-  // } catch (error) {
-  //   console.log('error', error);
-  // }
+  console.log('id', id);
+  console.log('data', data);
+  const dataObj = { id, data };
+  console.log('data!!!!!!!!', dataObj);
+  const updateData = JSON.stringify(dataObj);
+  console.log('updateData!!!!', updateData);
+  try {
+    const updateHabit = await axios.patch('/habits', updateData);
+    console.log('responseUpdate = ', updateHabit);
+    console.log('responseUpdate.status = ', updateHabit.status);
+    dispatch(habitsSlice.actions.updateHabitData(updateHabit.data));
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+
+    console.log('error', err);
+  }
 
   console.log('data update finished');
 };
