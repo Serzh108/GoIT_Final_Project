@@ -39,7 +39,12 @@ const deleteHabit = habitId => async dispatch => {
   try {
     const deletedHabit = await axios.delete(`/habits/${habitId}`);
     if (deletedHabit.statusText === 'OK') {
-      dispatch(habitsSlice.actions.deleteHabit(habitId));
+      dispatch(
+        habitsSlice.actions.deleteHabit({
+          habitId,
+          total: deletedHabit.data.total,
+        }),
+      );
     }
   } catch (err) {
     error({
