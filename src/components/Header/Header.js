@@ -26,7 +26,6 @@ function Header({ handleLogOut, name, total }) {
 
   const showModalToExit = () => {
     setisExit(true);
-    console.log('isExit', isExit);
   };
 
   const closeModal = () => {

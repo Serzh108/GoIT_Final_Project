@@ -1,13 +1,16 @@
-import React from 'react';
 import axios from 'axios';
-// import {useDispatch} from 'react-redux'
 import { authSlice } from './authReducer';
-// import {useDispatch} from 'react'
+
+import { notice, error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 
 const registrationEndpoint = '/auth/registration';
 const loginEndpoint = '/auth/login';
+
+// const history = useHistory()
 
 const registration = userData => async dispatch => {
   console.log('registration started!');
@@ -23,9 +26,19 @@ const registration = userData => async dispatch => {
       const name = JSON.parse(responseRegistration.config.data).name;
 
       dispatch(authSlice.actions.authRegister(name));
+      notice({
+        title: 'Please confirm your email',
+        text: 'Check your email (inbox or spam)',
+      });
+
+      // history.replace('/login')
     }
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+    console.log('error===', err.response.data);
   }
   console.log('registration finished!');
 };

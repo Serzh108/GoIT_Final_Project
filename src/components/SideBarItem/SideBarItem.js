@@ -1,26 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import css from './sideBarItem.module.css';
+import habitsOperations from '../../redux/habits/habitsOperations';
 
-const SideBarItem = ({ name }) => {
+const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
+  const dispatch = useDispatch();
   const [isModalOpen, setisModalOpen] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
-  // const [isDelete, setisDelete] = useState(false);
+  // const [isEdit, setisEdit] = useState(false);
+  const [editedHabit, seteditedHabit] = useState(name);
+  const [localEdit, setlocalEdit] = useState(false);
+
+  const refOverlay = useRef();
+  // console.log('overlay', refOverlay);
+
+  // const handleClickOverlay = ({ target }) => {
+  //   if (refOverlay.current !== target) return;
+  // };
 
   useEffect(() => {
     const handleEsc = event => {
       if (event.keyCode === 27) {
         setisModalOpen(false);
+        setisEdit(false);
+        setlocalEdit(false);
       }
     };
     window.addEventListener('keydown', handleEsc);
+    // refOverlay.current.addEventListener('click', handleClickOverlay);
 
     return () => {
       window.removeEventListener('keydown', handleEsc);
+      // refOverlay.current.removeEventListener('click', handleClickOverlay);
     };
-  }, []);
+  }, [setisEdit]);
 
   const showModal = () => {
     setisModalOpen(true);
@@ -28,7 +44,6 @@ const SideBarItem = ({ name }) => {
 
   const closeModal = () => {
     setisModalOpen(false);
-    // console.log('222', 222)
   };
 
   const showButtons = () => {
@@ -39,27 +54,76 @@ const SideBarItem = ({ name }) => {
     setshowBtns(false);
   };
 
+  const handleDeleteHabit = () => {
+    console.log(habitId);
+    // dispatch(habitsOperations.deleteHabit(habitId))
+    dispatch(habitsOperations.deleteHabit(habitId));
+  };
+
+  const editHabit = e => {
+    console.log('hello', 'hello');
+    setisEdit(true);
+    !isEdit && setlocalEdit(true);
+    // dispatch(habitsOperations.updateHabit());
+  };
+
+  const handleChange = e => {
+    seteditedHabit(e.target.value);
+    console.log('editedHabit', editedHabit);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('habitId', habitId);
+    dispatch(habitsOperations.updateHabitName(editedHabit, habitId));
+    setisEdit(false);
+    setlocalEdit(false);
+  };
+
   return (
     <>
-      <td
-        className={css.habits}
-        onMouseOver={showButtons}
-        onMouseLeave={hideButtons}
-      >
-        {name}
-        {showBtns && (
-          <div className={css.iconsWrap}>
-            <EditIcon
-              style={{ opacity: 0.3, fontSize: 20, marginRight: '4px' }}
-            ></EditIcon>
-            <DeleteForeverIcon
-              onClick={showModal}
-              style={{ opacity: 0.3, fontSize: 20 }}
-            ></DeleteForeverIcon>
-          </div>
-        )}
-      </td>
-      {isModalOpen && <DeleteHabitModal closeModal={closeModal} />}
+      {!localEdit ? (
+        <td
+          className={css.habits}
+          onMouseOver={showButtons}
+          onMouseLeave={hideButtons}
+        >
+          {name}
+          {showBtns && (
+            <div className={css.iconsWrap}>
+              <EditIcon
+                onClick={editHabit}
+                style={{ opacity: 0.3, fontSize: 20, marginRight: '4px' }}
+              ></EditIcon>
+
+              <DeleteForeverIcon
+                onClick={showModal}
+                style={{ opacity: 0.3, fontSize: 20 }}
+              ></DeleteForeverIcon>
+            </div>
+          )}
+        </td>
+      ) : (
+        <td>
+          {/* <FormInputAddHabit /> */}
+          <form onSubmit={handleSubmit}>
+            <input
+              autoFocus={true}
+              onChange={handleChange}
+              value={editedHabit}
+              style={{ width: '100px' }}
+            />
+          </form>
+        </td>
+      )}
+
+      {isModalOpen && (
+        <DeleteHabitModal
+          closeModal={closeModal}
+          refOverlay={refOverlay}
+          handleDeleteHabit={handleDeleteHabit}
+        />
+      )}
     </>
   );
 };
