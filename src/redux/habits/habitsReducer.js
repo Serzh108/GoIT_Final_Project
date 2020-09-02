@@ -21,7 +21,8 @@ export const habitsSlice = createSlice({
     }),
     deleteHabit: (state, { payload }) => ({
       ...state,
-      habits: state.habits.filter(habit => habit._id !== payload),
+      total: payload.total,
+      habits: state.habits.filter(habit => habit._id !== payload.habitId),
     }),
     updateHabitData: (state, { payload }) => ({
       ...state,
