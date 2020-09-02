@@ -6,24 +6,15 @@ import habitsOperations from '../../redux/habits/habitsOperations';
 const FormInputAddHabit = ({ setnewInput }) => {
   const dispatch = useDispatch();
   const [newHabit, setnewHabit] = useState('');
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  // };
 
   const handleQueryChange = e => {
     setnewHabit(e.target.value);
-    // console.log('e.target.value', e.target.value)
-    // console.log('e.target.value', e.target.value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('нас засабмитили:', newHabit);
-    // dispatch(habitsOperations.createHabit(newHabit))
-    // dispatch(habitsOperations.createHabit(newHabit));
-    dispatch(habitsOperations.getHabit());
-
-    // setnewHabit('');
+    dispatch(habitsOperations.createHabit(newHabit));
     setnewInput(false);
   };
 

@@ -2,8 +2,6 @@ import React from 'react';
 import css from './DateTable.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
-// import Table from '../Table/Table';
-
 const DateTable = ({ backData }) => {
   const getCalendarDay = i => {
     const now = new Date(new Date().setDate(new Date().getDate() - i));
@@ -21,6 +19,15 @@ const DateTable = ({ backData }) => {
     );
   };
 
+  const getDay = () => {
+    let calendar = [];
+    for (let i = 0; i < 21; i++) {
+      getCalendarDay(i);
+      calendar.push(getCalendarDay(i));
+    }
+    return calendar;
+  };
+
   return (
     <>
       {/* <table className={css.dateTable}>
@@ -28,14 +35,11 @@ const DateTable = ({ backData }) => {
         <tbody>
           <tr> */}
       {/* <SideBarItem/> */}
-      {backData.map((item, index) => getCalendarDay(index))}
+      {/* {backData.map((item, index) => getCalendarDay(index))} */}
+      {getDay()}
       <td key={uuidv4()} className={css.efficiency}>
         <div>Эффективность выполнения, %</div>
       </td>
-      {/* </tr>
-        </tbody>
-      </table> */}
-      {/* <Table />  */}
     </>
   );
 };
