@@ -5,7 +5,6 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import css from './sideBarItem.module.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
-import FormInputAddHabit from '../FormInputAddHabit/FormInputAddHabit';
 
 const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   const dispatch = useDispatch();
@@ -22,15 +21,14 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   //   if (refOverlay.current !== target) return;
   // };
 
-  const handleEsc = event => {
-    if (event.keyCode === 27) {
-      setisModalOpen(false);
-      setisEdit(false);
-      setlocalEdit(false);
-    }
-  };
-
   useEffect(() => {
+    const handleEsc = event => {
+      if (event.keyCode === 27) {
+        setisModalOpen(false);
+        setisEdit(false);
+        setlocalEdit(false);
+      }
+    };
     window.addEventListener('keydown', handleEsc);
     // refOverlay.current.addEventListener('click', handleClickOverlay);
 
@@ -38,7 +36,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
       window.removeEventListener('keydown', handleEsc);
       // refOverlay.current.removeEventListener('click', handleClickOverlay);
     };
-  }, []);
+  }, [setisEdit]);
 
   const showModal = () => {
     setisModalOpen(true);

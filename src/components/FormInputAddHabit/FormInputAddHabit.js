@@ -13,7 +13,7 @@ const FormInputAddHabit = ({ setnewInput }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('нас засабмитили:', newHabit);
+    // console.log('нас засабмитили:', newHabit);
     dispatch(habitsOperations.createHabit(newHabit));
     setnewInput(false);
   };
