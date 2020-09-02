@@ -4,15 +4,23 @@ import css from './deleteHabitModal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const DeleteHabitModal = ({ closeModal }) => {
+const DeleteHabitModal = ({ closeModal, refOverlay, handleDeleteHabit }) => {
+  // const refOverlay = useRef();
+
+  // const handleClickOverlay = ({target}) => {
+  //   if (refOverlay.current !== target) return
+  // }
   return createPortal(
     <>
-      <div onClick={closeModal} className={css.wrap}>
+      <div 
+      onClick={closeModal}
+      // ref={refOverlay} 
+      className={css.wrap}>
         <div className={css.delete_box}>
           <h2 className={css.title}>Удалить привычку?</h2>
           <div className={css.button_wrap}>
             <button
-              onClick={() => console.log('111', 111)}
+              onClick={handleDeleteHabit}
               className={css.delete}
             >
               ДА
