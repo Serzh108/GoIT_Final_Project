@@ -25,11 +25,10 @@ export const habitsSlice = createSlice({
     }),
     updateHabitData: (state, { payload }) => ({
       ...state,
-      habits: [...state.habits, payload],
-    }),
-    updateHabitName: (state, { payload }) => ({
-      ...state,
-      habits: [...state.habits, payload],
+      total: payload.total,
+      habits: state.habits.map(habit =>
+        habit._id === payload.updatedHabit._id ? payload.updatedHabit : habit,
+      ),
     }),
   },
 });
