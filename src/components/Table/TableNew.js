@@ -1,16 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import css from './Table.module.css';
 import { v4 as uuidv4 } from 'uuid';
-
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
 import 'react-circular-progressbar/dist/styles.css';
+import habitsOperations from '../../redux/habits/habitsOperations';
 
 const TableNew = ({ backData, habitId }) => {
+  const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
-    console.log(e.currentTarget.id);
+    const fullId = e.currentTarget.id.split('_');
+    const newData = [...backData];
+    newData[fullId[1]] = true;
+    console.log('newData', newData);
+    dispatch(habitsOperations.updateHabitData(fullId[0], newData));
   };
 
   const play = (item, idx) => {
@@ -20,7 +26,7 @@ const TableNew = ({ backData, habitId }) => {
           <td
             onClick={clickHabit}
             className={css.box}
-            id={habitId + idx}
+            id={habitId + '_' + idx}
             key={uuidv4()}
           ></td>
         );
@@ -30,7 +36,7 @@ const TableNew = ({ backData, habitId }) => {
             onClick={clickHabit}
             className={css.box}
             style={{ backgroundColor: '#ff4c610d' }}
-            id={habitId + idx}
+            id={habitId + '_' + idx}
             key={uuidv4()}
           >
             <ClearIcon style={{ color: '#FF4C61' }}></ClearIcon>
@@ -42,7 +48,7 @@ const TableNew = ({ backData, habitId }) => {
             onClick={clickHabit}
             className={css.box}
             style={{ background: '#50d2a00d' }}
-            id={habitId + idx}
+            id={habitId + '_' + idx}
             key={uuidv4()}
           >
             <DoneIcon style={{ color: '#33D69F' }}></DoneIcon>
@@ -54,7 +60,7 @@ const TableNew = ({ backData, habitId }) => {
           <td
             onClick={clickHabit}
             className={css.box}
-            id={habitId + idx}
+            id={habitId + '_' + idx}
             key={uuidv4()}
           ></td>
         );

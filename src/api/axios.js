@@ -7,7 +7,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    // console.log('config', config);
     config.headers = {
       Authorization: store.getState().auth.access_token,
       'content-type': 'application/json',
