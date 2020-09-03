@@ -1,11 +1,11 @@
 .mainContainer {
   margin: 0 auto;
-  width: 100%;
+  width: 1280px;
 }
 
 .sideBar {
   position: relative;
-  width: 269px;
+  width: 301px;
   height: 100vh;
   background: #373b53;
 }

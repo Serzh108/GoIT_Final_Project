@@ -82,6 +82,14 @@
   line-height: 15px;
 } */
 
+.errVerification {
+  color: #f00;
+  font-size: 12px;
+  position: absolute;
+  top: 16px;
+  right: 8px;
+}
+
 .registration_btn {
   width: 263px;
   height: 50px;

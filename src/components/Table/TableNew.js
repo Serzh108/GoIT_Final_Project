@@ -7,8 +7,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import 'react-circular-progressbar/dist/styles.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
 
-const TableNew = ({ backData, habitId, createAt }) => {
-  // console.log('createAt', createAt)
+const TableNew = ({ backData, habitId, startedHabit }) => {
   const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
 
@@ -16,8 +15,33 @@ const TableNew = ({ backData, habitId, createAt }) => {
     const fullId = e.currentTarget.id.split('_');
     const newData = [...backData];
     newData[fullId[1]] = !newData[fullId[1]];
-    // console.log('newData', newData);
+    console.log('newData', newData);
+
     dispatch(habitsOperations.updateHabitData(fullId[0], newData));
+  };
+
+  const notClick = () => {};
+
+  const countLag = () => {
+    //data createdAt
+    const dateStart = new Date(startedHabit);
+    const day = dateStart.getDate();
+    const month = dateStart.getMonth() + 1;
+    const year = dateStart.getFullYear();
+
+    //data Now
+    var now = new Date();
+    const day2 = now.getDate();
+    const month2 = now.getMonth() + 1;
+    const year2 = now.getFullYear();
+
+    // how days
+    const date1 = new Date(`'${month}-${day}-${year}'`);
+    const date2 = new Date(`'${month2}-${day2}-${year2}'`);
+    const daysLag = Math.ceil(
+      Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24),
+    );
+    return daysLag;
   };
 
   const play = (item, idx) => {
@@ -25,8 +49,8 @@ const TableNew = ({ backData, habitId, createAt }) => {
       case null:
         return (
           <td
-            onClick={clickHabit}
-            className={css.box}
+            onClick={idx <= countLag() ? clickHabit : notClick}
+            className={idx <= countLag() ? css.box : css.boxDisabled}
             id={habitId + '_' + idx}
             key={uuidv4()}
           ></td>
@@ -34,8 +58,8 @@ const TableNew = ({ backData, habitId, createAt }) => {
       case false:
         return (
           <td
-            onClick={clickHabit}
-            className={css.box}
+            onClick={idx <= countLag() ? clickHabit : notClick}
+            className={idx <= countLag() ? css.box : css.boxDisabled}
             style={{ backgroundColor: '#ff4c610d' }}
             id={habitId + '_' + idx}
             key={uuidv4()}
@@ -46,8 +70,8 @@ const TableNew = ({ backData, habitId, createAt }) => {
       case true:
         return (
           <td
-            onClick={clickHabit}
-            className={css.box}
+            onClick={idx <= countLag() ? clickHabit : notClick}
+            className={idx <= countLag() ? css.box : css.boxDisabled}
             style={{ background: '#50d2a00d' }}
             id={habitId + '_' + idx}
             key={uuidv4()}
@@ -59,8 +83,8 @@ const TableNew = ({ backData, habitId, createAt }) => {
       default:
         return (
           <td
-            onClick={clickHabit}
-            className={css.box}
+            onClick={idx <= countLag() ? clickHabit : notClick}
+            className={idx <= countLag() ? css.box : css.boxDisabled}
             id={habitId + '_' + idx}
             key={uuidv4()}
           ></td>

@@ -18,8 +18,9 @@ function StatisticsPage() {
   const { userName } = useSelector(state => state.auth);
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
+  console.log('habits.createAt', habits);
   const dispatch = useDispatch();
-
+  console.log('haha', habits);
   const habitsLength = habits.length;
 
   useEffect(() => {
@@ -80,8 +81,9 @@ function StatisticsPage() {
                     <TableNew
                       backData={item.data}
                       habitId={item._id}
-                      createAt={item.createAt}
+                      startedHabit={item.createAt}
                     />
+
                     <td className={css.progressWrap}>
                       {item.efficiency <= 79 ? (
                         <div style={{ paddingTop: '10px', width: '50px' }}>
