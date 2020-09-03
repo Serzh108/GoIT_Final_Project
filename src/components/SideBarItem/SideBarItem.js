@@ -112,6 +112,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
               autoFocus={true}
               onChange={handleChange}
               value={editedHabit}
+              maxLength="30"
             />
           </form>
         </td>

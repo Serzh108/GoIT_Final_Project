@@ -7,7 +7,6 @@ import ClearIcon from '@material-ui/icons/Clear';
 import 'react-circular-progressbar/dist/styles.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
 
-
 const TableNew = ({ backData, habitId, startedHabit }) => {
   const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
@@ -42,7 +41,6 @@ const TableNew = ({ backData, habitId, startedHabit }) => {
     const daysLag = Math.ceil(
       Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24),
     );
-
     return daysLag;
   };
 
