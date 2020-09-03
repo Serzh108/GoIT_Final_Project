@@ -7,13 +7,18 @@
 }
 
 .wtf {
-  width: 118px;
-  height: 50px;
-  background-image: url('../../assets/images/logo.png');
+  width: 80px;
+  height: 56px;
+  background-image: url('../../assets/images/header/bc19logo2.png');
   background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 22px;
+  margin-bottom: 10px;
+  /* align-items: center;
+  justify-content: center; */
 }
 
 .userName {
