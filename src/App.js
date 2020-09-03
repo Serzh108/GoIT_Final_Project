@@ -5,6 +5,7 @@ import './App.css';
 import RegistrationPage from './pages/auth/RegistrationPage';
 import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
+import Team from '../src/components/Team/Team'
 
 // console.log('hello');
 
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path="/home" component={StatisticsPage} />
+      {/* <Route exact path="team" component={Team}/> */}
       <Redirect to="/home" />
     </Switch>
   );
