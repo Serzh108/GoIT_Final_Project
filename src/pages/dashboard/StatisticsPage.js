@@ -18,6 +18,7 @@ function StatisticsPage() {
   const { userName } = useSelector(state => state.auth);
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
+  console.log('habits.createAt', habits);
   const dispatch = useDispatch();
   console.log('haha', habits);
   const habitsLength = habits.length;
