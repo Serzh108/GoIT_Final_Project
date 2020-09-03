@@ -9,18 +9,21 @@
 .wtf {
   width: 118px;
   height: 50px;
-  background-image: url('../../assets/images/logo.png');
+  background-image: url('../../assets/images/bootcamp.jpg');
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 20px;
 }
 
 .userName {
   /* width: 214px; */
-  width: 152px;
+  width: 94px;
   height: 50px;
   text-align: center;
+  margin-top: 12px;
+
 }
 
 .userNameNick {
