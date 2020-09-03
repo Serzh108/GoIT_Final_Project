@@ -20,6 +20,15 @@ table {
   height: 65px;
   border: solid 1px #eef0f7;
   text-align: center;
+  cursor: pointer;
+}
+
+.boxDisabled {
+  width: 37px;
+  height: 65px;
+  border: solid 1px #eef0f7;
+  text-align: center;
+  cursor: not-allowed;
 }
 
 .box:nth-child(8),

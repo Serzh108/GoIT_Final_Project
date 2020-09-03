@@ -9,6 +9,7 @@ const getHabit = newHabit => async (dispatch, getState) => {
   try {
     const responseGet = await axios.get('/habits');
     console.log('responseGet', responseGet.data)
+
     dispatch(habitsSlice.actions.getAllHabits(responseGet.data));
   } catch (err) {
     error({
