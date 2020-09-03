@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import style from './header.module.css';
 import ExitModal from '../ExitModal/ExitModal';
 import authOperations from '../../redux/auth/authOperations';
-import Team from '../Team/Team';
+// import Team from '../Team/Team';
 
 function Header({ handleLogOut, name, total }) {
   const [isExit, setisExit] = useState(false);
@@ -40,9 +40,9 @@ function Header({ handleLogOut, name, total }) {
   };
 
   const showTeam = () => {
-    history.push('/team')
+    history.push('/team');
     // setisShowTeam(true)
-  }
+  };
   return (
     <>
       <header>

@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
 
 const TableNew = ({ backData, habitId, createAt }) => {
-  console.log('createAt', createAt)
+  // console.log('createAt', createAt)
   const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
 
@@ -16,7 +16,7 @@ const TableNew = ({ backData, habitId, createAt }) => {
     const fullId = e.currentTarget.id.split('_');
     const newData = [...backData];
     newData[fullId[1]] = !newData[fullId[1]];
-    console.log('newData', newData);
+    // console.log('newData', newData);
     dispatch(habitsOperations.updateHabitData(fullId[0], newData));
   };
 

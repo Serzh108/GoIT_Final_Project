@@ -18,9 +18,9 @@ const registration = userData => async dispatch => {
       registrationEndpoint,
       userData,
     );
-    console.log('responseRegistration = ', responseRegistration);
-    console.log('responseRegistration.status = ', responseRegistration.status);
-    console.log('responseRegistration.data = ', responseRegistration.data);
+    // console.log('responseRegistration = ', responseRegistration);
+    // console.log('responseRegistration.status = ', responseRegistration.status);
+    // console.log('responseRegistration.data = ', responseRegistration.data);
     if (responseRegistration.status === 201) {
       const name = JSON.parse(responseRegistration.config.data).name;
 
@@ -46,9 +46,9 @@ const login = userData => async dispatch => {
   console.log('login started!');
   try {
     const responseLogin = await axios.post(loginEndpoint, userData);
-    console.log('responseLogin = ', responseLogin);
-    console.log('status = ', responseLogin.status);
-    console.log('access_token = ', responseLogin.data.access_token);
+    // console.log('responseLogin = ', responseLogin);
+    // console.log('status = ', responseLogin.status);
+    // console.log('access_token = ', responseLogin.data.access_token);
     dispatch(authSlice.actions.authSignIn(responseLogin.data.access_token));
   } catch (error) {
     console.log('error', error);

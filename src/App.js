@@ -5,7 +5,7 @@ import './App.css';
 import RegistrationPage from './pages/auth/RegistrationPage';
 import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
-import Team from '../src/components/Team/Team'
+// import Team from '../src/components/Team/Team'
 
 const App = () => {
   const { isAuth } = useSelector(state => state.auth);

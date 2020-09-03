@@ -62,14 +62,28 @@ function LoginForm({ history }) {
     console.log('222222', 222222);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   console.log('works!!!!!!!');
+  //   setState({
+  //     isLoading: true,
+  //   });
+  //   const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = state;
+  //   console.log('state', state);
+  //   console.log('user', user);
+  //   dispatch(authOperations.login(user));
+  //   reset();
+  //   history.replace('/home');
+  // };
+
+  const handleSubmit1 = values => {
     console.log('works!!!!!!!');
+    console.log('values', values);
     setState({
       isLoading: true,
     });
-    const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = state;
-    console.log('state', state);
+    const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = values;
+    console.log('values', values);
     console.log('user', user);
     dispatch(authOperations.login(user));
     reset();
@@ -96,7 +110,9 @@ function LoginForm({ history }) {
         Попробуй прокачать 3 привычки бесплатно, мы знаем ты можешь!
       </p>
       <Formik
-        // onSubmit={values => console.log(values)}
+        // onSubmit={fonar}
+
+        onSubmit={values => handleSubmit1(values)}
         validationSchema={SignupSchema}
         initialValues={{
           email: '',
@@ -107,8 +123,9 @@ function LoginForm({ history }) {
         }}
       >
         {({ errors, touched }) => (
-          <Form className={styles.form}
-          // onSubmit={handleSubmit}
+          <Form
+            className={styles.form}
+            // onSubmit={handleSubmit}
           >
             <label htmlFor={emailInputId} className={styles.nameLabel}>
               <Field
@@ -134,9 +151,11 @@ function LoginForm({ history }) {
                 <div>{errors.password}</div>
               ) : null}
             </label>
-            <button type="submit"
-            // onClick={handleSubmit}
-            className={styles.registration_btn}>
+            <button
+              type="submit"
+              // onClick={handleSubmit}
+              className={styles.registration_btn}
+            >
               Войти
             </button>
           </Form>

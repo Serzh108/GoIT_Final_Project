@@ -19,23 +19,13 @@ const initialState = {
   password: '',
   isemailOnFocus: false,
   ispasswordOnFocus: false,
-  isLoading: false,
+  // isLoading: false,
 };
 
 function LoginForm({ history }) {
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
-  // class RegistrationForm extends Component {
-  // state = {
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   isnameOnFocus: false,
-  //   isemailOnFocus: false,
-  //   ispasswordOnFocus: false,
-  //   isLoading: false,
-  // };
-  // ============= temp!!! =========
+  const [isLoading, setisLoading] = useState(false);
   const emailInputId = uuidv4();
   const passwordInputId = uuidv4();
 
@@ -46,23 +36,38 @@ function LoginForm({ history }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setState({
-      isLoading: true,
-    });
-    const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = state;
+    const { isemailOnFocus, ispasswordOnFocus, ...user } = state;
+    // setisLoading((prev) => {
+    //   return {isLoading: !prev.isLoading}
+    // })
+    // .then(console.log(1111))
+    // console.log('isLoading111', isLoading);
 
-    // запрос на бэк
+    // setState(prev => ({...prev, isLoading: true}))
+    // console.log('state.isLoading111', state.isLoading)
+    // state.isLoading = true;
+    // console.log('isLoading!!!', state.isLoading);
     console.log('state', state);
-    console.log('user', user);
-    // console.log('authOperations.registration', authOperations.registration())
+    // console.log('user', user);
 
     dispatch(authOperations.login(user));
-    // .then(() => {
-    //   console.log('this.state.isLoading', this.state.isLoading);
-    //   this.setState({ isLoading: false });
-    // });
+    setisLoading(true);
+
+    // .then(setisLoading(true))
+    // .then(console.log('isLoading111', isLoading)).then(setisLoading(false)).then(console.log('isLoading222', isLoading))
+
+    // .then(setState((prev) => ({...prev, isLoading: false})))
+    // console.log('state.isLoading222', state.isLoading)
+
+    // .then((prev) => ({...prev, isLoading: false
+    // }));
+    // console.log('state.isLoading222', state.isLoading)
+
+    // setState({ isLoading: true });
+    // state.isLoading = false;
+    // console.log('this.state.isLoading', state.isLoading);
     reset();
-    history.replace('/home');
+    // history.replace('/home');
   };
 
   const reset = () => {
@@ -85,13 +90,13 @@ function LoginForm({ history }) {
         Попробуй прокачать 3 привычки бесплатно, мы знаем ты можешь!
       </p>
       <form onSubmit={handleSubmit} className={styles.form}>
-        {state.isLoading && (
+        {isLoading && (
           <div className="sweet-loading">
             <RingLoader
               css={override}
               size={35}
               color={'#ff6c00'}
-              loading={state.loading}
+              loading={isLoading}
             />
           </div>
         )}

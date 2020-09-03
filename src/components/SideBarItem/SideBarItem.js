@@ -55,13 +55,13 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   };
 
   const handleDeleteHabit = () => {
-    console.log(habitId);
+    // console.log(habitId);
     // dispatch(habitsOperations.deleteHabit(habitId))
     dispatch(habitsOperations.deleteHabit(habitId));
   };
 
   const editHabit = e => {
-    console.log('hello', 'hello');
+    // console.log('hello', 'hello');
     setisEdit(true);
     !isEdit && setlocalEdit(true);
     // dispatch(habitsOperations.updateHabit());
@@ -69,12 +69,12 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
 
   const handleChange = e => {
     seteditedHabit(e.target.value);
-    console.log('editedHabit', editedHabit);
+    // console.log('editedHabit', editedHabit);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('habitId', habitId);
+    // console.log('habitId', habitId);
     dispatch(habitsOperations.updateHabitName(editedHabit, habitId));
     setisEdit(false);
     setlocalEdit(false);
