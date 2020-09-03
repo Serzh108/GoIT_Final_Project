@@ -7,14 +7,15 @@ import ClearIcon from '@material-ui/icons/Clear';
 import 'react-circular-progressbar/dist/styles.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
 
-const TableNew = ({ backData, habitId }) => {
+const TableNew = ({ backData, habitId, createAt }) => {
+  console.log('createAt', createAt)
   const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
     const fullId = e.currentTarget.id.split('_');
     const newData = [...backData];
-    newData[fullId[1]] = true;
+    newData[fullId[1]] = !newData[fullId[1]];
     console.log('newData', newData);
     dispatch(habitsOperations.updateHabitData(fullId[0], newData));
   };

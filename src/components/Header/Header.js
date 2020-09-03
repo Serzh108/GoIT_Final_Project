@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
 import style from './header.module.css';
 import ExitModal from '../ExitModal/ExitModal';
 import authOperations from '../../redux/auth/authOperations';
+import Team from '../Team/Team';
 
 function Header({ handleLogOut, name, total }) {
   const [isExit, setisExit] = useState(false);
+  // const [isShowTeam, setisShowTeam] = useState(false)
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,11 +38,17 @@ function Header({ handleLogOut, name, total }) {
     dispatch(authOperations.signOut());
     history.replace('/login');
   };
+
+  const showTeam = () => {
+    history.push('/team')
+    // setisShowTeam(true)
+  }
   return (
     <>
       <header>
         <div className={style.headerContainer}>
-          <div className={style.wtf}></div>
+          <div onClick={showTeam} className={style.wtf}></div>
+          {/* {isShowTeam && <Team />} */}
           <ul className={style.userName}>
             <li className={style.userNameNick}>{name}</li>
             <li className={style.userNameLevel}>Новичок</li>

@@ -11,6 +11,7 @@
   background-color: rgba(55, 59, 83, 0.9);
   color: #a6acbe;
   padding-left: 30px;
+  padding-right: 30px;
 }
 
 .habits::first-letter {
@@ -21,4 +22,23 @@
   margin-left: 130px;
   position: absolute;
   top: 22px;
+}
+
+.inputEdit {
+  width: 150px;
+  border: none;
+  margin-left: 30px;
+  height: 20px;
+  padding-left: 10px;
+  color: #a6acbe;
+  background-color: rgba(55, 59, 83, 0.0);
+}
+
+
+.inputEdit:focus {
+  outline: none
+}
+
+.name {
+  width: 170px;
 }
