@@ -40,7 +40,6 @@ const registration = userData => async dispatch => {
 const login = userData => async (dispatch, getState) => {
   console.log('login started!');
   dispatch(authSlice.actions.setIsLoading());
-  console.log('GETSTATEisLoading', getState().isLoading);
   try {
     const responseLogin = await axios.post(loginEndpoint, userData);
     dispatch(authSlice.actions.authSignIn(responseLogin.data.access_token));
