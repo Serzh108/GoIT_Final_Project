@@ -10,6 +10,7 @@ import habitsOperations from '../../redux/habits/habitsOperations';
 const TableNew = ({ backData, habitId, startedHabit }) => {
   const dispatch = useDispatch();
   // const [doneHabit, setDoneHabit] = useState(null);
+  console.log('startedHabit = ', startedHabit);
 
   const clickHabit = e => {
     const fullId = e.currentTarget.id.split('_');
@@ -41,6 +42,7 @@ const TableNew = ({ backData, habitId, startedHabit }) => {
     const daysLag = Math.ceil(
       Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24),
     );
+    console.log('daysLag = ', daysLag);
     return daysLag;
   };
 
