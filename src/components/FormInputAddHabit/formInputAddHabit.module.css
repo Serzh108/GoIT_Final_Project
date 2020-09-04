@@ -1,6 +1,6 @@
 .input {
   height: 52px;
-  width: 214px;
+  width: 246px;
   border: 1px solid #ff6c00;
   padding-left: 30px;
   font-family: Montserrat, sans-serif;
@@ -12,4 +12,8 @@
 
 .input::placeholder {
   color: #a6acbe;
+}
+
+.addInputForm {
+  width: 246px;
 }

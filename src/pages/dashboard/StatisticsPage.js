@@ -11,6 +11,8 @@ import DateTable from '../../components/DateTable/DateTable';
 import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHabit';
 import SideBarHead from '../../components/SideBarHead/SideBarHead';
 import habitsOperations from '../../redux/habits/habitsOperations';
+// loader
+import LoadingOverlay from 'react-loading-overlay';
 
 function StatisticsPage() {
   const [isEdit, setisEdit] = useState(false);
@@ -120,7 +122,7 @@ function StatisticsPage() {
                 {/* {habitsLength >= 10 && setnewInput(false)} */}
                 {newInput && (
                   <tr className={css.habitWrap}>
-                    <td>
+                    <td style={{ width: '260px' }}>
                       <FormInputAddHabit setnewInput={setnewInput} />
                     </td>
                   </tr>

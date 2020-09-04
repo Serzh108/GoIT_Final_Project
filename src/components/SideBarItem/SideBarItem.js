@@ -88,7 +88,9 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
           onMouseOver={showButtons}
           onMouseLeave={hideButtons}
         >
-          <span className={css.name}>{name}</span>
+          {/* <span className={css.name}> */}
+          {name}
+          {/* </span> */}
           {showBtns && (
             <div className={css.iconsWrap}>
               <EditIcon
@@ -104,7 +106,9 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
           )}
         </td>
       ) : (
-        <td style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)' }}>
+        <td
+          style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)', width: '260px' }}
+        >
           {/* <FormInputAddHabit /> */}
           <form className={css.form} onSubmit={handleSubmit}>
             <input

@@ -19,7 +19,7 @@ const FormInputAddHabit = ({ setnewInput }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={css.addInputForm} onSubmit={handleSubmit}>
         <input
           value={newHabit}
           autoFocus={true}
