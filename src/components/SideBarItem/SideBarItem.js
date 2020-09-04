@@ -117,10 +117,10 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
       const secondPart = name.slice(14);
       const newName = firstPart + '- \n' + secondPart;
       console.log('newItem', newName);
-
       // newName = nameArray;
-
       return newName;
+    } else {
+      return name;
     }
     console.log('FUNCTION FINISH');
   };
