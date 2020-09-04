@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-// import LoadingOverlay from 'react-loading-overlay';
 import styles from './RegistrationForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // temp!!!
 import authOperations from '../../redux/auth/authOperations';
 // formik
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import RingLoader from 'react-spinners/RingLoader';
+import { css } from '@emotion/core';
 
-// import { css } from '@emotion/core';
-// import RingLoader from 'react-spinners/RingLoader';
-
-// const override = css`
-//   display: block;
-//   margin: 0 auto;
-//   border-color: red;
-// `;
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const initialState = {
   name: '',
@@ -27,7 +25,6 @@ const initialState = {
   isnameOnFocus: false,
   isemailOnFocus: false,
   ispasswordOnFocus: false,
-  isLoading: false,
 };
 
 const SignupSchema = Yup.object().shape({
@@ -45,33 +42,19 @@ const SignupSchema = Yup.object().shape({
 function RegistrationForm() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { isLoading } = useSelector(state => state.auth);
   const [state, setState] = useState(initialState);
   const nameInputId = uuidv4();
   const emailInputId = uuidv4();
   const passwordInputId = uuidv4();
 
-  // const handleChange = e => {
-  //   const { name, value } = e.currentTarget;
-  //   setState(prev => ({ ...prev, [name]: value }));
-  // };
-
   const handleSubmit = values => {
-    // e.preventDefault();
-    setState({
-      isLoading: true,
-    });
     const {
       isnameOnFocus,
       isemailOnFocus,
       ispasswordOnFocus,
-      isLoading,
       ...user
     } = values;
-    // запрос на бэк
-    console.log('values', values);
-    console.log('user', user);
-    // console.log('authOperations.registration', authOperations.registration());
-
     dispatch(authOperations.registration(user));
     reset();
     history.replace('/login');
@@ -96,6 +79,23 @@ function RegistrationForm() {
       <p className={styles.title_description}>
         Попробуй прокачать 3 привычки бесплатно, мы знаем ты можешь!
       </p>
+      {isLoading && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '35%',
+            left: '45%',
+            zIndex: '200',
+          }}
+        >
+          <RingLoader
+            size={220}
+            color={'#ff6c00'}
+            css={override}
+            loading={isLoading}
+          />
+        </div>
+      )}
       <Formik
         onSubmit={values => handleSubmit(values)}
         validationSchema={SignupSchema}
@@ -106,7 +106,6 @@ function RegistrationForm() {
           isnameOnFocus: false,
           isemailOnFocus: false,
           ispasswordOnFocus: false,
-          isLoading: false,
         }}
       >
         {({ errors, touched }) => (

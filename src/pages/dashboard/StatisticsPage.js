@@ -14,8 +14,6 @@ import habitsOperations from '../../redux/habits/habitsOperations';
 // loader
 import LoadingOverlay from 'react-loading-overlay';
 
-
-
 function StatisticsPage() {
   const [isEdit, setisEdit] = useState(false);
   const [newInput, setnewInput] = useState(false);
@@ -24,9 +22,7 @@ function StatisticsPage() {
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
   // console.log('habits.userName!!!', userName);
-  console.log('habits.createAt', habits);
   const dispatch = useDispatch();
-  console.log('haha', habits);
   const habitsLength = habits.length;
 
   useEffect(() => {

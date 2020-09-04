@@ -108,7 +108,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   // };
 
   const setNameLength = name => {
-    console.log('FUNCTION START');
+    // console.log('FUNCTION START');
     if (name.length > 15) {
       // const nameArray = name.split(' ');
       // let newName = [];
@@ -116,13 +116,13 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
       const firstPart = name.slice(0, 14);
       const secondPart = name.slice(14);
       const newName = firstPart + '- \n' + secondPart;
-      console.log('newItem', newName);
+      // console.log('newItem', newName);
       // newName = nameArray;
       return newName;
     } else {
       return name;
     }
-    console.log('FUNCTION FINISH');
+    // console.log('FUNCTION FINISH');
   };
 
   const showName = setNameLength(name);
@@ -158,14 +158,14 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
         <td
           style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)', width: '214px' }}
         >
-          {/* <FormInputAddHabit /> */}
           <form className={css.form} onSubmit={handleSubmit}>
             <input
-              className={css.inputEdit}
+              pattern="[a-zA-Z0-9а-яА-Я/' ']+"
               autoFocus={true}
               onChange={handleChange}
               value={editedHabit}
               maxLength="30"
+              className={css.input}
             />
           </form>
         </td>

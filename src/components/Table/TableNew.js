@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import css from './Table.module.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,98 +9,90 @@ import habitsOperations from '../../redux/habits/habitsOperations';
 
 const TableNew = ({ backData, habitId, startedHabit }) => {
   const dispatch = useDispatch();
-  // const [doneHabit, setDoneHabit] = useState(null);
-  console.log('startedHabit = ', startedHabit);
-
-  const clickHabit = e => {
-    const fullId = e.currentTarget.id.split('_');
-    const newData = [...backData];
-    newData[fullId[1]] = !newData[fullId[1]];
-    console.log('newData', newData);
-
-    dispatch(habitsOperations.updateHabitData(fullId[0], newData));
-  };
-
-  const notClick = () => {};
-
-  const countLag = () => {
-    //data createdAt
+  const countLag = useMemo(() => {
     const dateStart = new Date(startedHabit);
     const day = dateStart.getDate();
     const month = dateStart.getMonth() + 1;
     const year = dateStart.getFullYear();
-
     //data Now
-    var now = new Date();
+    const now = new Date();
     const day2 = now.getDate();
     const month2 = now.getMonth() + 1;
     const year2 = now.getFullYear();
-
     // how days
-    const date1 = new Date(`'${month}-${day}-${year}'`);
-    const date2 = new Date(`'${month2}-${day2}-${year2}'`);
-    const daysLag = Math.ceil(
+    const date1 = new Date(`${month},${day},${year}`);
+    const date2 = new Date(`${month2},${day2},${year2}`);
+    return Math.ceil(
       Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24),
     );
-    console.log('daysLag = ', daysLag);
-    return daysLag;
+  }, [startedHabit]);
+  // console.log('countLag', countLag);
+  // const [doneHabit, setDoneHabit] = useState(null);
+  const clickHabit = (e, idx, habitId) => {
+    // console.log('works: ', idx);
+    const newData = [...backData];
+    newData[idx] = !newData[idx];
+    dispatch(habitsOperations.updateHabitData(habitId, newData));
   };
-
   const play = (item, idx) => {
     switch (item) {
       case null:
         return (
           <td
-            onClick={idx <= countLag() ? clickHabit : notClick}
-            className={idx <= countLag() ? css.box : css.boxDisabled}
-            id={habitId + '_' + idx}
+            onClick={e => idx <= countLag && clickHabit(e, idx, habitId)}
+            className={idx <= countLag ? css.box : css.boxDisabled}
             key={uuidv4()}
-          ></td>
+          />
         );
       case false:
         return (
           <td
-            onClick={idx <= countLag() ? clickHabit : notClick}
-            className={idx <= countLag() ? css.box : css.boxDisabled}
+            onClick={e => idx <= countLag && clickHabit(e, idx, habitId)}
+            className={idx <= countLag ? css.box : css.boxDisabled}
             style={{ backgroundColor: '#ff4c610d' }}
-            id={habitId + '_' + idx}
             key={uuidv4()}
           >
-            <ClearIcon style={{ color: '#FF4C61' }}></ClearIcon>
+            <ClearIcon style={{ color: '#FF4C61' }} />
           </td>
         );
       case true:
         return (
           <td
-            onClick={idx <= countLag() ? clickHabit : notClick}
-            className={idx <= countLag() ? css.box : css.boxDisabled}
+            onClick={e => idx <= countLag && clickHabit(e, idx, habitId)}
+            className={idx <= countLag ? css.box : css.boxDisabled}
             style={{ background: '#50d2a00d' }}
-            id={habitId + '_' + idx}
             key={uuidv4()}
           >
-            <DoneIcon style={{ color: '#33D69F' }}></DoneIcon>
+            <DoneIcon style={{ color: '#33D69F' }} />
           </td>
         );
-
       default:
         return (
           <td
-            onClick={idx <= countLag() ? clickHabit : notClick}
-            className={idx <= countLag() ? css.box : css.boxDisabled}
-            id={habitId + '_' + idx}
+            onClick={e => idx <= countLag && clickHabit(e, idx, habitId)}
+            className={idx <= countLag ? css.box : css.boxDisabled}
             key={uuidv4()}
-          ></td>
+          />
         );
     }
   };
-
+  const createData = () => {
+    const componentsData = backData
+      .map((item, idx) => play(item, idx))
+      .splice(0, countLag + 1)
+      .reverse();
+    for (let i = countLag; i < 20; i++) {
+      componentsData.push(<td className={css.boxDisabled} key={uuidv4()} />);
+    }
+    return componentsData;
+  };
   return (
     <>
       {/* <table className={css.checkTable}>
         <thead></thead>
         <tbody>
           <tr className={css.checkWrap}> */}
-      {backData.map((item, idx) => play(item, idx))}
+      {createData()}
       {/* <td className={css.progressWrap}>
               {percentage <= 79 ? (
                 <div style={{ paddingTop: '10px', width: '50px' }}>
@@ -134,5 +126,4 @@ const TableNew = ({ backData, habitId, startedHabit }) => {
     </>
   );
 };
-
 export default TableNew;
