@@ -14,6 +14,8 @@ import habitsOperations from '../../redux/habits/habitsOperations';
 // loader
 import LoadingOverlay from 'react-loading-overlay';
 
+
+
 function StatisticsPage() {
   const [isEdit, setisEdit] = useState(false);
   const [newInput, setnewInput] = useState(false);
@@ -122,7 +124,7 @@ function StatisticsPage() {
                 {/* {habitsLength >= 10 && setnewInput(false)} */}
                 {newInput && (
                   <tr className={css.habitWrap}>
-                    <td style={{ width: '260px' }}>
+                    <td>
                       <FormInputAddHabit setnewInput={setnewInput} />
                     </td>
                   </tr>

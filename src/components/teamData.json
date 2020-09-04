@@ -1,0 +1,19 @@
+import photo from '../assets/images/logo.png'
+
+const teamData = [{
+  "name": "Sergiy Zhyharev",
+  "position": "Team lead / Front-End developer",
+  "image": "",
+  "email": "example@gmail.com",
+  "image": "photo"
+},
+{
+  "name": "Sergiy Zhyharev",
+  "position": "Team lead / Front-End developer",
+  "image": "",
+  "email": "example@gmail.com",
+  "image": "photo"
+
+}];
+
+export default teamData;

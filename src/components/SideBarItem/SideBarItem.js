@@ -80,6 +80,53 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
     setlocalEdit(false);
   };
 
+  // const setNameLength = name => {
+  //   console.log('FUNCTION START');
+  //   if (name.length > 15) {
+  //     const nameArray = name.split(' ');
+  //     let newName = [];
+  //     if (nameArray.length === 1) {
+  //       console.log('nameArrayBeforeMap', nameArray);
+  //       console.log('name is too long!', name);
+  //       newName = nameArray.map(item => {
+  //         if (item.length > 15) {
+  //           const firstPart = item.slice(0, 12);
+  //           const secondPart = item.slice(12);
+  //           item = firstPart + '- \n' + secondPart;
+  //           console.log('newItem', item);
+  //           return item;
+  //         }
+  //       });
+  //     } else {
+  //       newName = nameArray;
+  //     }
+  //     console.log('nameArrayAfterMap', nameArray);
+  //     console.log('newName', newName);
+  //     return newName.join(' ');
+  //   }
+  //   console.log('FUNCTION FINISH');
+  // };
+
+  const setNameLength = name => {
+    console.log('FUNCTION START');
+    if (name.length > 15) {
+      // const nameArray = name.split(' ');
+      // let newName = [];
+      // if (nameArray.length === 1)
+      const firstPart = name.slice(0, 14);
+      const secondPart = name.slice(14);
+      const newName = firstPart + '- \n' + secondPart;
+      console.log('newItem', newName);
+
+      // newName = nameArray;
+
+      return newName;
+    }
+    console.log('FUNCTION FINISH');
+  };
+
+  const showName = setNameLength(name);
+
   return (
     <>
       {!localEdit ? (
@@ -88,8 +135,10 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
           onMouseOver={showButtons}
           onMouseLeave={hideButtons}
         >
+          {showName}
+          {/* {setNameLength(name)} */}
           {/* <span className={css.name}> */}
-          {name}
+          {/* {name} */}
           {/* </span> */}
           {showBtns && (
             <div className={css.iconsWrap}>
@@ -107,7 +156,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
         </td>
       ) : (
         <td
-          style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)', width: '260px' }}
+          style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)', width: '214px' }}
         >
           {/* <FormInputAddHabit /> */}
           <form className={css.form} onSubmit={handleSubmit}>
