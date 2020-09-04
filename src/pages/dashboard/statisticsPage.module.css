@@ -1,11 +1,13 @@
 .mainContainer {
   margin: 0 auto;
+  /* width: 100%; */
   width: 1280px;
 }
 
 .sideBar {
   position: relative;
-  width: 301px;
+  /* width: 269px; Ира поменяла */
+  width: 271px;
   height: 100vh;
   background: #373b53;
 }

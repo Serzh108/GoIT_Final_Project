@@ -29,16 +29,9 @@ const MainTable = () => {
   ];
 
   const done = backData.filter(item => item === true).length;
-  console.log('done', done);
-  // const missed = backData.filter(item => item === false).length
-  // console.log('missed', missed)
-  // const checked = done + missed
-  // console.log('checked', checked)
   const total = backData.length;
-  console.log('total', total);
 
   const percentage = Math.floor((done / total) * 100);
-  console.log('percentage', percentage);
 
   return (
     <>

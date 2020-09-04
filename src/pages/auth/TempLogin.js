@@ -5,15 +5,25 @@ import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 // temp!!!
 import authOperations from '../../redux/auth/authOperations';
-import { css } from '@emotion/core';
-// import RingLoader from 'react-spinners/RingLoader';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+//loader
+import RingLoader from 'react-spinners/RingLoader';
+import LoadingOverlay from 'react-loading-overlay';
+import styled, { css } from 'styled-components';
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
+const DarkBackground = styled.div`
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
 `;
 
 const initialState = {
@@ -35,8 +45,10 @@ const SignupSchema = Yup.object().shape({
 function LoginForm({ history }) {
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
+  // const [isLoading, setisLoading] = useState(false);
   const emailInputId = uuidv4();
   const passwordInputId = uuidv4();
+  // console.log('isLoading!!!!!!!', isLoading)
 
   // const handleChange = e => {
   //   const { name, value } = e.currentTarget;
@@ -44,15 +56,35 @@ function LoginForm({ history }) {
   // };
 
   const handleSubmit = values => {
-    // e.preventDefault();
-    console.log('works!!!!!!!');
+    // debugger
     setState({
       isLoading: true,
     });
-    const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = values;
-    console.log('values', values);
-    console.log('user', user);
+
+    console.log('isLoadingBeforeDis', state.isLoading);
+    console.log('state!!!', state);
+    const { isemailOnFocus, ispasswordOnFocus, ...user } = values;
+    // console.log('values!!!', values.isLoading)
+    // console.log('userValues111', values);
     dispatch(authOperations.login(user));
+    // setState({
+    //   isLoading: false
+    // })
+    // .then(
+    //   setState(prev => ({ ...prev, isLoading: true })),
+    // );
+    // console.log('value222', value)
+    // setisLoading(true)
+    // .then(console.log('isLoading', isLoading))
+    console.log('isLoadingAfterDis!!!!!', state.isLoading);
+
+    // setState({
+    //   isLoading: true,
+    // });
+    // setState((prev) => ({...prev, isLoading: true}));
+
+    // console.log('????????????', values.isLoading);
+
     reset();
     history.replace('/home');
   };
@@ -70,12 +102,35 @@ function LoginForm({ history }) {
     setState(prev => ({ ...prev, [`is${name}OnFocus`]: false }));
   };
 
+  const buttonSubmit = () => {
+    setState({
+      isLoading: true,
+    });
+    console.log('isLoadingButton', state.isLoading);
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Трекер привычек</h2>
       <p className={styles.title_description}>
         Попробуй прокачать 3 привычки бесплатно, мы знаем ты можешь!
       </p>
+
+      {state.isLoading && (
+        <h2>HELLO</h2>
+        // <DarkBackground>
+        //   <LoadingOverlay
+        //     active={state.isLoading}
+        //     spinner={
+        //       <RingLoader
+        //         size={80}
+        //         color={'#ff6c00'}
+        //       />
+        //     }
+        //     text="Loading..."
+        //   ></LoadingOverlay>
+        // </DarkBackground>
+      )}
       <Formik
         onSubmit={values => handleSubmit(values)}
         validationSchema={SignupSchema}
@@ -84,7 +139,6 @@ function LoginForm({ history }) {
           password: '',
           isemailOnFocus: false,
           ispasswordOnFocus: false,
-          isLoading: false,
         }}
       >
         {({ errors, touched }) => (
@@ -123,6 +177,7 @@ function LoginForm({ history }) {
             </label>
             <button
               type="submit"
+              onClick={buttonSubmit}
               // onClick={handleSubmit}
               className={styles.registration_btn}
             >
@@ -131,7 +186,6 @@ function LoginForm({ history }) {
           </Form>
         )}
       </Formik>
-
       <p className={styles.form_description}>
         Еще нет аккаунта?<NavLink to="/"> Зарегистрироваться</NavLink>
       </p>
