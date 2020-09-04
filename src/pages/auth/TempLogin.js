@@ -8,23 +8,23 @@ import authOperations from '../../redux/auth/authOperations';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 //loader
-import RingLoader from 'react-spinners/RingLoader';
-import LoadingOverlay from 'react-loading-overlay';
-import styled, { css } from 'styled-components';
+// import RingLoader from 'react-spinners/RingLoader';
+// import LoadingOverlay from 'react-loading-overlay';
+// import styled, { css } from 'styled-components';
 
-const DarkBackground = styled.div`
-  display: flex;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-  justify-content: center;
-`;
+// const DarkBackground = styled.div`
+//   display: flex;
+//   position: fixed;
+//   z-index: 999;
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   overflow: auto;
+//   background-color: rgb(0, 0, 0);
+//   background-color: rgba(0, 0, 0, 0.4);
+//   justify-content: center;
+// `;
 
 const initialState = {
   email: '',

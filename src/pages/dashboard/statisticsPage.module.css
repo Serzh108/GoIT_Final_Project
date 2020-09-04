@@ -7,7 +7,8 @@
 .sideBar {
   position: relative;
   /* width: 269px; Ира поменяла */
-  width: 271px;
+  /* width: 271px; */
+  width: 269px;
   height: 100vh;
   background: #373b53;
 }
