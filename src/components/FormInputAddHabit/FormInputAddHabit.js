@@ -13,14 +13,13 @@ const FormInputAddHabit = ({ setnewInput }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log('нас засабмитили:', newHabit);
     dispatch(habitsOperations.createHabit(newHabit));
     setnewInput(false);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={css.addInputForm} onSubmit={handleSubmit}>
         <input
           value={newHabit}
           autoFocus={true}

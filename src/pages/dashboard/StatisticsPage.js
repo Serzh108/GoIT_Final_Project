@@ -11,13 +11,19 @@ import DateTable from '../../components/DateTable/DateTable';
 import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHabit';
 import SideBarHead from '../../components/SideBarHead/SideBarHead';
 import habitsOperations from '../../redux/habits/habitsOperations';
+// loader
+import LoadingOverlay from 'react-loading-overlay';
+
+
 
 function StatisticsPage() {
   const [isEdit, setisEdit] = useState(false);
   const [newInput, setnewInput] = useState(false);
-  const { userName } = useSelector(state => state.auth);
+  // const { userName } = useSelector(state => state.auth);
+  const { userName } = useSelector(state => state.habits);
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
+  // console.log('habits.userName!!!', userName);
   console.log('habits.createAt', habits);
   const dispatch = useDispatch();
   console.log('haha', habits);

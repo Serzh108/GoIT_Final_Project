@@ -13,7 +13,7 @@ const Table = ({ backData, percentage }) => {
   const [doneHabit, setDoneHabit] = useState(null);
 
   const clickHabit = e => {
-    console.log(e.currentTarget.id);
+    // console.log(e.currentTarget.id);
   };
 
   const play = item => {
