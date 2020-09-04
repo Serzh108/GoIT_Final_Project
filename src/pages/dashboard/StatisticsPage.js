@@ -87,7 +87,7 @@ function StatisticsPage() {
                     />
 
                     <td className={css.progressWrap}>
-                      {item.efficiency <= 79 ? (
+                      {/* {item.efficiency <= 79 ? (
                         <div style={{ paddingTop: '10px', width: '50px' }}>
                           <CircularProgressbar
                             styles={buildStyles({
@@ -113,7 +113,21 @@ function StatisticsPage() {
                             text={`${item.efficiency}`}
                           />
                         </div>
-                      )}
+                      )} */}
+
+                      <div style={{ paddingTop: '10px', width: '50px' }}>
+                        <CircularProgressbar
+                          styles={buildStyles({
+                            pathColor:
+                              item.efficiency <= 79 ? '#FF4C61' : '#33D69F',
+                            textColor: 'black',
+                            textSize: '30px',
+                            trailColor: '#F8F8FB',
+                          })}
+                          value={item.efficiency}
+                          text={`${item.efficiency}`}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}
