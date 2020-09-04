@@ -1,28 +1,31 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import css from './deleteHabitModal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const DeleteHabitModal = ({ closeModal, refOverlay, handleDeleteHabit }) => {
-  // const refOverlay = useRef();
+const DeleteHabitModal = ({ closeModal, handleDeleteHabit }) => {
+  const refOverlay = useRef();
 
-  // const handleClickOverlay = ({target}) => {
-  //   if (refOverlay.current !== target) return
-  // }
+  const handleClickOverlay = ({ target }) => {
+    if (refOverlay.current !== target) return;
+    closeModal();
+  };
+
+  useEffect(() => {
+    refOverlay.current.addEventListener('click', handleClickOverlay);
+    return () => {
+      refOverlay.current.removeEventListener('click', handleClickOverlay);
+    };
+  }, [handleClickOverlay]);
+
   return createPortal(
     <>
-      <div 
-      onClick={closeModal}
-      // ref={refOverlay} 
-      className={css.wrap}>
+      <div ref={refOverlay} className={css.wrap}>
         <div className={css.delete_box}>
           <h2 className={css.title}>Удалить привычку?</h2>
           <div className={css.button_wrap}>
-            <button
-              onClick={handleDeleteHabit}
-              className={css.delete}
-            >
+            <button onClick={handleDeleteHabit} className={css.delete}>
               ДА
             </button>
             <span className={css.slash}>|</span>
