@@ -9,28 +9,21 @@ axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 const registrationEndpoint = '/auth/registration';
 const loginEndpoint = '/auth/login';
 
-// const history = useHistory()
-
 const registration = userData => async dispatch => {
   console.log('registration started!');
+  dispatch(authSlice.actions.setIsLoading());
   try {
     const responseRegistration = await axios.post(
       registrationEndpoint,
       userData,
     );
-    console.log('responseRegistration = ', responseRegistration);
-    console.log('responseRegistration.status = ', responseRegistration.status);
-    console.log('responseRegistration.data = ', responseRegistration.data);
     if (responseRegistration.status === 201) {
       const name = JSON.parse(responseRegistration.config.data).name;
-
       dispatch(authSlice.actions.authRegister(name));
       notice({
         title: 'Please confirm your email',
         text: 'Check your email (inbox or spam)',
       });
-
-      // history.replace('/login')
     }
   } catch (err) {
     error({
@@ -39,20 +32,24 @@ const registration = userData => async dispatch => {
     });
     console.log('error===', err.response.data);
   }
+  dispatch(authSlice.actions.resetIsLoading());
   console.log('registration finished!');
 };
 
-const login = userData => async dispatch => {
+const login = userData => async (dispatch, getState) => {
   console.log('login started!');
+  dispatch(authSlice.actions.setIsLoading());
   try {
     const responseLogin = await axios.post(loginEndpoint, userData);
-    console.log('responseLogin = ', responseLogin);
-    console.log('status = ', responseLogin.status);
-    console.log('access_token = ', responseLogin.data.access_token);
     dispatch(authSlice.actions.authSignIn(responseLogin.data.access_token));
-  } catch (error) {
-    console.log('error', error);
+  } catch (err) {
+    error({
+      title: 'Oh No!',
+      text: err.response.data,
+    });
+    console.log('error', err);
   }
+  dispatch(authSlice.actions.resetIsLoading());
   console.log('login finished!');
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './RegistrationPage.module.css';
-import RegistrationForm from './RegistrationForm';
+// import RegistrationForm from './RegistrationForm';
+import TempRegistrations from './TempRegistrations';
 
 function RegistrationPage() {
   return (
@@ -8,7 +9,8 @@ function RegistrationPage() {
       <header className={styles.header}></header>
       <section className={styles.section}>
         <div className={styles.formBox}>
-          <RegistrationForm />
+          {/* <RegistrationForm /> */}
+          <TempRegistrations />
         </div>
       </section>
     </div>

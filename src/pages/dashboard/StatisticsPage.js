@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import 'react-circular-progressbar/dist/styles.css';
+import RingLoader from 'react-spinners/RingLoader';
+import { css } from '@emotion/core';
 import style from './statisticsPage.module.css';
 import Header from '../../components/Header/Header';
 import TableNew from '../../components/Table/TableNew';
 import SideBarItem from '../../components/SideBarItem/SideBarItem';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import css from '../../components/Table/Table.module.css';
+import tablecss from '../../components/Table/Table.module.css';
 import DateTable from '../../components/DateTable/DateTable';
 import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHabit';
 import SideBarHead from '../../components/SideBarHead/SideBarHead';
 import habitsOperations from '../../redux/habits/habitsOperations';
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
 function StatisticsPage() {
   const [isEdit, setisEdit] = useState(false);
   const [newInput, setnewInput] = useState(false);
-  const { userName } = useSelector(state => state.auth);
+  const { userName } = useSelector(state => state.habits);
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
-  console.log('habits.createAt', habits);
+  const { isLoading } = useSelector(state => state.habits);
+
   const dispatch = useDispatch();
-  console.log('haha', habits);
   const habitsLength = habits.length;
 
   useEffect(() => {
@@ -43,7 +51,6 @@ function StatisticsPage() {
 
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
-
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
@@ -52,11 +59,24 @@ function StatisticsPage() {
   return (
     <>
       <main className={style.mainContainer}>
-        <Header
-          name={userName}
-          total={total}
-          // handleLogOut={handleLogOut}
-        />
+        <Header name={userName} total={total} />
+        {isLoading && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '35%',
+              left: '45%',
+              zIndex: '990',
+            }}
+          >
+            <RingLoader
+              size={220}
+              color={'#ff6c00'}
+              css={override}
+              loading={isLoading}
+            />
+          </div>
+        )}
         <div className={style.sideBar}>
           <div className={style.date}>
             <table>
@@ -68,7 +88,6 @@ function StatisticsPage() {
                     habitsLength={habitsLength}
                   />
                   <DateTable />
-                  {/* // backData={habits[0].data} /> */}
                 </tr>
                 {habits.map(item => (
                   <tr key={item._id}>
@@ -81,43 +100,27 @@ function StatisticsPage() {
                     <TableNew
                       backData={item.data}
                       habitId={item._id}
-                      createAt={item.createAt}
+                      startedHabit={item.createAt}
                     />
-
-                    <td className={css.progressWrap}>
-                      {item.efficiency <= 79 ? (
-                        <div style={{ paddingTop: '10px', width: '50px' }}>
-                          <CircularProgressbar
-                            styles={buildStyles({
-                              pathColor: '#FF4C61',
-                              textColor: 'black',
-                              textSize: '30px',
-                              trailColor: '#F8F8FB',
-                            })}
-                            value={item.efficiency}
-                            text={`${item.efficiency}`}
-                          />
-                        </div>
-                      ) : (
-                        <div style={{ paddingTop: '10px', width: '50px' }}>
-                          <CircularProgressbar
-                            styles={buildStyles({
-                              pathColor: '#33D69F',
-                              textColor: 'black',
-                              textSize: '30px',
-                              trailColor: '#F8F8FB',
-                            })}
-                            value={item.efficiency}
-                            text={`${item.efficiency}`}
-                          />
-                        </div>
-                      )}
+                    <td className={tablecss.progressWrap}>
+                      <div style={{ paddingTop: '10px', width: '50px' }}>
+                        <CircularProgressbar
+                          styles={buildStyles({
+                            pathColor:
+                              item.efficiency <= 79 ? '#FF4C61' : '#33D69F',
+                            textColor: 'black',
+                            textSize: '30px',
+                            trailColor: '#F8F8FB',
+                          })}
+                          value={item.efficiency}
+                          text={`${item.efficiency}`}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}
-                {/* {habitsLength >= 10 && setnewInput(false)} */}
                 {newInput && (
-                  <tr className={css.habitWrap}>
+                  <tr className={tablecss.habitWrap}>
                     <td>
                       <FormInputAddHabit setnewInput={setnewInput} />
                     </td>
