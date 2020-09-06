@@ -3,7 +3,6 @@ import { authSlice } from './authReducer';
 import { notice, error } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
-// import {store} from
 
 axios.defaults.baseURL = 'https://api-habit.herokuapp.com';
 

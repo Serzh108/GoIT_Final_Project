@@ -10,16 +10,10 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setisModalOpen] = useState(false);
   const [showBtns, setshowBtns] = useState(false);
-  // const [isEdit, setisEdit] = useState(false);
   const [editedHabit, seteditedHabit] = useState(name);
   const [localEdit, setlocalEdit] = useState(false);
 
   const refOverlay = useRef();
-  // console.log('overlay', refOverlay);
-
-  // const handleClickOverlay = ({ target }) => {
-  //   if (refOverlay.current !== target) return;
-  // };
 
   useEffect(() => {
     const handleEsc = event => {
@@ -30,11 +24,8 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
       }
     };
     window.addEventListener('keydown', handleEsc);
-    // refOverlay.current.addEventListener('click', handleClickOverlay);
-
     return () => {
       window.removeEventListener('keydown', handleEsc);
-      // refOverlay.current.removeEventListener('click', handleClickOverlay);
     };
   }, [setisEdit]);
 
@@ -55,26 +46,20 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   };
 
   const handleDeleteHabit = () => {
-    // console.log(habitId);
-    // dispatch(habitsOperations.deleteHabit(habitId))
     dispatch(habitsOperations.deleteHabit(habitId));
   };
 
   const editHabit = e => {
-    // console.log('hello', 'hello');
     setisEdit(true);
     !isEdit && setlocalEdit(true);
-    // dispatch(habitsOperations.updateHabit());
   };
 
   const handleChange = e => {
     seteditedHabit(e.target.value);
-    // console.log('editedHabit', editedHabit);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log('habitId', habitId);
     dispatch(habitsOperations.updateHabitName(editedHabit, habitId));
     setisEdit(false);
     setlocalEdit(false);
@@ -136,20 +121,20 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
           onMouseLeave={hideButtons}
         >
           {showName}
-          {/* {setNameLength(name)} */}
-          {/* <span className={css.name}> */}
-          {/* {name} */}
-          {/* </span> */}
           {showBtns && (
             <div className={css.iconsWrap}>
               <EditIcon
                 onClick={editHabit}
-                style={{ opacity: 0.3, fontSize: 20, marginRight: '4px' }}
+                style={{
+                  opacity: 0.3,
+                  fontSize: 20,
+                  marginRight: '4px',
+                  cursor: 'pointer',
+                }}
               ></EditIcon>
-
               <DeleteForeverIcon
                 onClick={showModal}
-                style={{ opacity: 0.3, fontSize: 20 }}
+                style={{ opacity: 0.3, fontSize: 20, cursor: 'pointer' }}
               ></DeleteForeverIcon>
             </div>
           )}

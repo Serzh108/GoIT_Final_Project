@@ -7,17 +7,17 @@ const modalRoot = document.querySelector('#modal-root');
 const DeleteHabitModal = ({ closeModal, handleDeleteHabit }) => {
   const refOverlay = useRef();
 
-  const handleClickOverlay = ({ target }) => {
-    if (refOverlay.current !== target) return;
-    closeModal();
-  };
-
   useEffect(() => {
-    refOverlay.current.addEventListener('click', handleClickOverlay);
-    return () => {
-      refOverlay.current.removeEventListener('click', handleClickOverlay);
+    const overlayCurrent = refOverlay.current;
+    const handleClickOverlay = ({ target }) => {
+      if (overlayCurrent !== target) return;
+      closeModal();
     };
-  }, [handleClickOverlay]);
+    overlayCurrent.addEventListener('click', handleClickOverlay);
+    return () => {
+      overlayCurrent.removeEventListener('click', handleClickOverlay);
+    };
+  }, [closeModal]);
 
   return createPortal(
     <>
@@ -25,7 +25,11 @@ const DeleteHabitModal = ({ closeModal, handleDeleteHabit }) => {
         <div className={css.delete_box}>
           <h2 className={css.title}>Удалить привычку?</h2>
           <div className={css.button_wrap}>
-            <button onClick={handleDeleteHabit} className={css.delete}>
+            <button
+              type="submit"
+              onClick={handleDeleteHabit}
+              className={css.delete}
+            >
               ДА
             </button>
             <span className={css.slash}>|</span>
