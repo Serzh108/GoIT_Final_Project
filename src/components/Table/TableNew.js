@@ -15,6 +15,8 @@ const TableNew = ({ backData, habitId, startedHabit }) => {
     const fullId = e.currentTarget.id.split('_');
     const newData = [...backData];
     newData[fullId[1]] = !newData[fullId[1]];
+    console.log('newData', newData);
+
     dispatch(habitsOperations.updateHabitData(fullId[0], newData));
   };
 

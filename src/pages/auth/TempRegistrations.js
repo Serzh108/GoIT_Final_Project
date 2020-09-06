@@ -1,28 +1,41 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import LoadingOverlay from 'react-loading-overlay';
 import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 // temp!!!
 import authOperations from '../../redux/auth/authOperations';
-import { css } from '@emotion/core';
-import RingLoader from 'react-spinners/RingLoader';
+// formik
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+// import { notice} from '@pnotify/core';
+// import '@pnotify/core/dist/PNotify.css';
+// import '@pnotify/core/dist/BrightTheme.css';
+
+// import { css } from '@emotion/core';
+// import RingLoader from 'react-spinners/RingLoader';
+
+// const override = css`
+//   display: block;
+//   margin: 0 auto;
+//   border-color: red;
+// `;
 
 const initialState = {
+  name: '',
   email: '',
   password: '',
+  isnameOnFocus: false,
   isemailOnFocus: false,
   ispasswordOnFocus: false,
   isLoading: false,
 };
 
-function LoginForm({ history }) {
+function RegistrationForm() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
   // class RegistrationForm extends Component {
@@ -36,6 +49,7 @@ function LoginForm({ history }) {
   //   isLoading: false,
   // };
   // ============= temp!!! =========
+  const nameInputId = uuidv4();
   const emailInputId = uuidv4();
   const passwordInputId = uuidv4();
 
@@ -49,24 +63,30 @@ function LoginForm({ history }) {
     setState({
       isLoading: true,
     });
-    const { isemailOnFocus, ispasswordOnFocus, isLoading, ...user } = state;
+    const {
+      isnameOnFocus,
+      isemailOnFocus,
+      ispasswordOnFocus,
+      isLoading,
+      ...user
+    } = state;
 
     // запрос на бэк
     console.log('state', state);
     console.log('user', user);
-    // console.log('authOperations.registration', authOperations.registration())
+    console.log('authOperations.registration', authOperations.registration());
 
-    dispatch(authOperations.login(user));
-    // .then(() => {
-    //   console.log('this.state.isLoading', this.state.isLoading);
-    //   this.setState({ isLoading: false });
-    // });
+    dispatch(authOperations.registration(user)) && history.replace();
     reset();
-    history.replace('/home');
+    // notice({
+    //   title: 'Please confirm your email',
+    //   text: 'Check your email',
+    // });
+    // history.replace('/login')
   };
 
   const reset = () => {
-    setState({ email: '', password: '' });
+    setState({ name: '', email: '', password: '' });
   };
 
   const inputFocused = e => {
@@ -87,14 +107,33 @@ function LoginForm({ history }) {
       <form onSubmit={handleSubmit} className={styles.form}>
         {state.isLoading && (
           <div className="sweet-loading">
-            <RingLoader
+            {/* <RingLoader
               css={override}
               size={35}
               color={'#ff6c00'}
               loading={state.loading}
-            />
+            /> */}
+            <LoadingOverlay
+              active={state.isLoading}
+              spinner
+              text="Секундочку..."
+            ></LoadingOverlay>
           </div>
         )}
+        <label htmlFor={nameInputId} className={styles.nameLabel}>
+          <input
+            value={state.name}
+            name="name"
+            type="name"
+            id={nameInputId}
+            className={styles.input}
+            placeholder={!state.isnameOnFocus ? 'Имя' : ''}
+            onChange={handleChange}
+            onFocus={inputFocused}
+            onBlur={inputBlured}
+          />
+          {state.isnameOnFocus ? <span>Имя</span> : null}
+        </label>
         <label htmlFor={emailInputId} className={styles.nameLabel}>
           <input
             value={state.email}
@@ -124,15 +163,17 @@ function LoginForm({ history }) {
           {state.ispasswordOnFocus ? <span>Пароль</span> : null}
         </label>
         <button type="submit" className={styles.registration_btn}>
-          Войти
+          Зарегистрироваться
         </button>
       </form>
-
       <p className={styles.form_description}>
-        Еще нет аккаунта?<NavLink to="/"> Зарегистрироваться</NavLink>
+        Уже есть аккаунт?{' '}
+        <NavLink activeClassName="grey" to="/login" className="link">
+          Войти
+        </NavLink>
       </p>
     </div>
   );
 }
 
-export default LoginForm;
+export default RegistrationForm;
