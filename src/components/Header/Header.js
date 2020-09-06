@@ -39,16 +39,16 @@ function Header({ handleLogOut, name, total }) {
     history.replace('/login');
   };
 
-  const showTeam = () => {
-    history.push('/team');
-    // setisShowTeam(true)
-  };
+  // const showTeam = () => {
+  //   history.push('/team')
+
+  // }
   return (
     <>
       <header>
         <div className={style.headerContainer}>
-          <div onClick={showTeam} className={style.wtf}></div>
-          {/* {isShowTeam && <Team />} */}
+          {/* <img className='wtf' src="../../assets/images/header/bc19logo.png" width="50" height="50" alt="bc19"/> */}
+          <a href="/team" className={style.wtf}></a>
           <ul className={style.userName}>
             <li className={style.userNameNick}>{name}</li>
             <li className={style.userNameLevel}>Новичок</li>
