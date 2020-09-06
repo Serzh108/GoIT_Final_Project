@@ -97,22 +97,25 @@ a {
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  width: 100px;
+  width: 200px;
   height: 40px;
   background-color: #eeeeee;
   border-radius: 10px;
   position: relative;
-  left: 580px;
+  left: 540px;
   top: 840px;
+}
+
+.goback a {
+  color: var(--main-text-color);
 }
 
 .title {
   display: flex;
   justify-content: center;
-  color: #333333;
-  font-size: 24px;
+  color: var(--main-text-color);
+  font-size: 28px;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
-  /* line-height: 5px; */
   text-transform: uppercase;
 }
