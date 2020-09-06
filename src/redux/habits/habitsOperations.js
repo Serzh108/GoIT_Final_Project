@@ -5,7 +5,6 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 const getHabit = newHabit => async (dispatch, getState) => {
-  console.log('get started!');
   dispatch(habitsSlice.actions.setIsLoading());
   try {
     const responseGet = await axios.get('/habits');
@@ -18,11 +17,9 @@ const getHabit = newHabit => async (dispatch, getState) => {
     console.log('error', err);
   }
   dispatch(habitsSlice.actions.resetIsLoading());
-  console.log('get finished!');
 };
 
 const createHabit = newHabit => async (dispatch, getState) => {
-  console.log('create started!');
   dispatch(habitsSlice.actions.setIsLoading());
   try {
     const responseCreate = await axios.post('/habits', { name: newHabit });
@@ -35,11 +32,9 @@ const createHabit = newHabit => async (dispatch, getState) => {
     console.log('error', err);
   }
   dispatch(habitsSlice.actions.resetIsLoading());
-  console.log('create finished!');
 };
 
 const deleteHabit = habitId => async dispatch => {
-  console.log('delete started');
   dispatch(habitsSlice.actions.setIsLoading());
   try {
     const deletedHabit = await axios.delete(`/habits/${habitId}`);
@@ -59,12 +54,10 @@ const deleteHabit = habitId => async dispatch => {
     console.log('error', err);
   }
   dispatch(habitsSlice.actions.resetIsLoading());
-  console.log('delete finished!');
 };
 
 const updateHabitName = (name, id) => async (dispatch, getState) => {
   dispatch(habitsSlice.actions.setIsLoading());
-  console.log('update started');
   const dataObj = { id, name };
   try {
     const updateHabit = await axios.patch('/habits', dataObj);
@@ -77,7 +70,6 @@ const updateHabitName = (name, id) => async (dispatch, getState) => {
     console.log('error', err);
   }
   dispatch(habitsSlice.actions.resetIsLoading());
-  console.log('update finished!');
 };
 
 const updateHabitData = (id, data) => async dispatch => {
@@ -94,7 +86,6 @@ const updateHabitData = (id, data) => async dispatch => {
     console.log('error', err);
   }
   dispatch(habitsSlice.actions.resetIsLoading());
-  console.log('data update finished');
 };
 
 export default {

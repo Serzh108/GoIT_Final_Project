@@ -88,7 +88,6 @@ function Header({ handleLogOut, name, total }) {
               <button
                 // onClick={signOut}
                 onClick={showModalToExit}
-                // onClick={showModalToExit}
                 // isExit={isExit}
                 className={style.buttonLogout}
               ></button>

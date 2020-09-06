@@ -7,8 +7,6 @@ import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
 import Team from './components/Team/Team';
 
-// console.log('hello');
-
 const App = () => {
   const { isAuth } = useSelector(state => state.auth);
   if (!isAuth) {

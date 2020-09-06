@@ -10,7 +10,6 @@ const registrationEndpoint = '/auth/registration';
 const loginEndpoint = '/auth/login';
 
 const registration = userData => async dispatch => {
-  console.log('registration started!');
   dispatch(authSlice.actions.setIsLoading());
   try {
     const responseRegistration = await axios.post(
@@ -33,11 +32,9 @@ const registration = userData => async dispatch => {
     console.log('error===', err.response.data);
   }
   dispatch(authSlice.actions.resetIsLoading());
-  console.log('registration finished!');
 };
 
 const login = userData => async (dispatch, getState) => {
-  console.log('login started!');
   dispatch(authSlice.actions.setIsLoading());
   try {
     const responseLogin = await axios.post(loginEndpoint, userData);
@@ -50,7 +47,6 @@ const login = userData => async (dispatch, getState) => {
     console.log('error', err);
   }
   dispatch(authSlice.actions.resetIsLoading());
-  console.log('login finished!');
 };
 
 const signOut = () => async dispatch => {
@@ -58,31 +54,3 @@ const signOut = () => async dispatch => {
 };
 
 export default { registration, login, signOut };
-
-// Heroku host: https://api-habit.herokuapp.com/
-// Auth
-// Login
-// URN: /auth/login
-// METHOD: POST
-// BODY:
-// Request:
-// {
-//   "email": "naydyonovdanil@gmail.com",
-//   "password": "Qwerty123"
-// }
-
-// Response: status 200
-// {
-//   "access_token": <JWT token>
-// }
-// Registration
-// URN: /auth/registration
-// METHOD: POST
-// BODY:
-// Request:
-// {
-//   "name": "Danil",
-//   "email": "naydyonovdanil@gmail.com",
-//   "password": "Qwerty123"
-// }
-// Response: status 201
