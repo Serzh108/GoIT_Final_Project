@@ -164,6 +164,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
               autoFocus={true}
               onChange={handleChange}
               value={editedHabit}
+              minLength="2"
               maxLength="30"
               className={css.input}
             />
