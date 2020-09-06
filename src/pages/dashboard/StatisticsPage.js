@@ -8,7 +8,7 @@ import Header from '../../components/Header/Header';
 import TableNew from '../../components/Table/TableNew';
 import SideBarItem from '../../components/SideBarItem/SideBarItem';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import scss from '../../components/Table/Table.module.css';
+import tablecss from '../../components/Table/Table.module.css';
 import DateTable from '../../components/DateTable/DateTable';
 import FormInputAddHabit from '../../components/FormInputAddHabit/FormInputAddHabit';
 import SideBarHead from '../../components/SideBarHead/SideBarHead';
@@ -102,39 +102,25 @@ function StatisticsPage() {
                       habitId={item._id}
                       startedHabit={item.createAt}
                     />
-                    <td className={scss.progressWrap}>
-                      {item.efficiency <= 79 ? (
-                        <div style={{ paddingTop: '10px', width: '50px' }}>
-                          <CircularProgressbar
-                            styles={buildStyles({
-                              pathColor: '#FF4C61',
-                              textColor: 'black',
-                              textSize: '30px',
-                              trailColor: '#F8F8FB',
-                            })}
-                            value={item.efficiency}
-                            text={`${item.efficiency}`}
-                          />
-                        </div>
-                      ) : (
-                        <div style={{ paddingTop: '10px', width: '50px' }}>
-                          <CircularProgressbar
-                            styles={buildStyles({
-                              pathColor: '#33D69F',
-                              textColor: 'black',
-                              textSize: '30px',
-                              trailColor: '#F8F8FB',
-                            })}
-                            value={item.efficiency}
-                            text={`${item.efficiency}`}
-                          />
-                        </div>
-                      )}
+                    <td className={tablecss.progressWrap}>
+                      <div style={{ paddingTop: '10px', width: '50px' }}>
+                        <CircularProgressbar
+                          styles={buildStyles({
+                            pathColor:
+                              item.efficiency <= 79 ? '#FF4C61' : '#33D69F',
+                            textColor: 'black',
+                            textSize: '30px',
+                            trailColor: '#F8F8FB',
+                          })}
+                          value={item.efficiency}
+                          text={`${item.efficiency}`}
+                        />
+                      </div>
                     </td>
                   </tr>
                 ))}
                 {newInput && (
-                  <tr className={scss.habitWrap}>
+                  <tr className={tablecss.habitWrap}>
                     <td>
                       <FormInputAddHabit setnewInput={setnewInput} />
                     </td>

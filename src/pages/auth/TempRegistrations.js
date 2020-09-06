@@ -161,7 +161,7 @@ function RegistrationForm() {
               // onClick={handleSubmit}
               className={styles.registration_btn}
             >
-              Войти
+              Зарегистрироваться
             </button>
           </Form>
         )}
