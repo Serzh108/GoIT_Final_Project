@@ -13,7 +13,7 @@ function Team() {
       </button>
       <ul className={style.ourTeamList}>
         {teamData.map(personalData => (
-          <li key={uuidv4()} classname={style.ourTeamItem}>
+          <li key={uuidv4()} className={style.ourTeamItem}>
             <ul className={style.Wrapper}>
               <li key={uuidv4()} className={style.Img}>
                 <img
@@ -39,7 +39,7 @@ function Team() {
                         rel="noopener noreferrer"
                       >
                         <svg
-                          enable-background="new 0 0 24 24"
+                          enableBackground="new 0 0 24 24"
                           height="40px"
                           viewBox="0 0 24 24"
                           width="40px"
@@ -74,7 +74,7 @@ function Team() {
                       >
                         <svg
                           id="Capa_1"
-                          enable-background="new 0 0 512 512"
+                          enableBackground="new 0 0 512 512"
                           height="40px"
                           viewBox="0 0 512 512"
                           width="40px"

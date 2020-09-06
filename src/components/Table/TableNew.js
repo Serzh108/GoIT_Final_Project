@@ -26,10 +26,8 @@ const TableNew = ({ backData, habitId, startedHabit }) => {
       Math.abs(date2.getTime() - date1.getTime()) / (1000 * 3600 * 24),
     );
   }, [startedHabit]);
-  // console.log('countLag', countLag);
   // const [doneHabit, setDoneHabit] = useState(null);
   const clickHabit = (e, idx, habitId) => {
-    // console.log('works: ', idx);
     const newData = [...backData];
     newData[idx] = !newData[idx];
     dispatch(habitsOperations.updateHabitData(habitId, newData));

@@ -3,7 +3,7 @@ import {
   combineReducers,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
+
 import {
   persistStore,
   persistReducer,
