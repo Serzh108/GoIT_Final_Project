@@ -113,5 +113,6 @@ a {
   font-size: 24px;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
+  /* line-height: 5px; */
   text-transform: uppercase;
 }
