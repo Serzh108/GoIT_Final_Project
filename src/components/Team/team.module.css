@@ -77,9 +77,42 @@
 a:hover {
   fill: red;
 }
+
 .socialLinkWrapper {
   align-items: flex-end;
   justify-content: center;
   display: flex;
   height: 94%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.goback {
+  align-content: center;
+  margin-bottom: 15px;
+  color: #333333;
+  font-size: 14px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 100px;
+  height: 40px;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  position: relative;
+  left: 580px;
+  top: 840px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: #333333;
+  font-size: 24px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  /* line-height: 5px; */
+  text-transform: uppercase;
 }

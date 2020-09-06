@@ -3,6 +3,7 @@ import Ira from '../../assets/images/ourteam/Ira.jpg';
 import Natasha from '../../assets/images/ourteam/Natasha.jpg';
 import Julia from '../../assets/images/ourteam/Julia.jpg';
 import Serhii from '../../assets/images/ourteam/Serhii.jpg';
+import Mike from '../../assets/images/ourteam/Mike.jpg';
 
 const teamData = [
   {
@@ -32,7 +33,7 @@ const teamData = [
     sociallist: {
       git: 'https://github.com/Ghore',
       linkedin: 'https://www.linkedin.com/in/illia-kudimov-6886211b1/',
-      email: 'mailto:illiakudimov@gmail.com',
+      email: 'mailto:illia.kudimov@gmail.com',
     },
   },
   {
@@ -46,13 +47,13 @@ const teamData = [
     },
   },
   {
-    name: 'Illia Kudimov',
-    position: 'Front End Developer',
-    image: Illia,
+    name: 'Mike Bogdanov',
+    position: 'Project Manager',
+    image: Mike,
     sociallist: {
-      git: 'https://github.com/Ghore',
-      linkedin: 'https://www.linkedin.com/in/illia-kudimov-6886211b1/',
-      email: 'mailto:illiakudimov@gmail.com',
+      // git: 'https://github.com/Ghore',
+      linkedin: 'https://www.linkedin.com/in/mike-bogdanov-7b342389/',
+      email: 'mailto:bogdanov.biss@gmail.com',
     },
   },
   {

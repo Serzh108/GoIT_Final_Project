@@ -7,6 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 function Team() {
   return (
     <section className={style.ourTeam}>
+      <h2 className={style.title}>Our team</h2>
+      <button className={style.goback}>
+        <a href="/home">Go to homepage</a>
+      </button>
       <ul className={style.ourTeamList}>
         {teamData.map(personalData => (
           <li key={uuidv4()} className={style.ourTeamItem}>
