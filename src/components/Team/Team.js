@@ -14,7 +14,7 @@ function Team() {
               <li key={uuidv4()} className={style.Img}>
                 <img
                   src={personalData.image}
-                  alt="Image"
+                  alt="Team member"
                   width="350"
                   height="350"
                 />
@@ -29,7 +29,11 @@ function Team() {
                 <div className={style.overlay}>
                   <ul className={style.socialLinkWrapper}>
                     <li key={uuidv4()} className={style.link}>
-                      <a href={personalData.sociallist.git} target="_blank">
+                      <a
+                        href={personalData.sociallist.git}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <svg
                           enable-background="new 0 0 24 24"
                           height="40px"
@@ -45,6 +49,7 @@ function Team() {
                       <a
                         href={personalData.sociallist.linkedin}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           height="40px"
@@ -61,6 +66,7 @@ function Team() {
                         type="email"
                         href={personalData.sociallist.email}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <svg
                           id="Capa_1"

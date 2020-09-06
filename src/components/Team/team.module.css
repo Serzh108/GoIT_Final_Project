@@ -78,7 +78,8 @@ a:hover {
   fill: red;
 }
 .socialLinkWrapper {
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   display: flex;
+  height: 94%;
 }
