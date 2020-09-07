@@ -78,6 +78,10 @@ a:hover {
   fill: red;
 }
 
+svg:hover {
+  fill: red;
+}
+
 .socialLinkWrapper {
   align-items: flex-end;
   justify-content: center;

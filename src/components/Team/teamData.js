@@ -41,7 +41,7 @@ const teamData = [
     position: 'Front End Developer',
     image: Natasha,
     sociallist: {
-      git: 'github.com/NatTuardy',
+      git: 'https://github.com/NatTuardy',
       linkedin: 'https://www.linkedin.com/in/nataly-maydannyk-b508a31b5/',
       email: 'mailto:nattuardy@gmail.com',
     },

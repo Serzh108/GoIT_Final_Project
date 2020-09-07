@@ -40,6 +40,7 @@ function Team() {
                       >
                         <svg
                           enableBackground="new 0 0 24 24"
+                          // fill="#555"
                           height="40px"
                           viewBox="0 0 24 24"
                           width="40px"
