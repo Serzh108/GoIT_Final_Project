@@ -67,6 +67,7 @@
   transition: all 200ms linear;
   box-shadow: 15px 15px 1px 1px rgba(29, 25, 25, 0.5);
   transform: translate(-5%, -5%);
+  /* align-content: center; не раскоменчивать */
 }
 
 .link {
