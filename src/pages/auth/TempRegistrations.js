@@ -118,6 +118,7 @@ function RegistrationForm() {
                 type="text"
                 onFocus={inputFocused}
                 onBlur={inputBlured}
+                pattern="[a-zA-Zа-яА-Я]+"
               />
               {state.isnameOnFocus ? <span>Имя</span> : null}
               {errors.name && touched.name ? (
@@ -150,6 +151,7 @@ function RegistrationForm() {
                 onBlur={inputBlured}
                 name="password"
                 type="password"
+                pattern="[a-zA-Z0-9а-яА-Я]+"
               />
               {state.ispasswordOnFocus ? <span>Пароль</span> : null}
               {errors.password && touched.password ? (

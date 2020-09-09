@@ -142,6 +142,7 @@ function LoginForm({ history: { replace } }) {
                 onBlur={inputBlured}
                 name="password"
                 type="password"
+                pattern="[a-zA-Z0-9а-яА-Я]+"
               />
               {state.ispasswordOnFocus ? <span>Пароль</span> : null}
               {errors.password && touched.password ? (
