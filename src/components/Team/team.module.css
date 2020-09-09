@@ -54,9 +54,9 @@
   top: 0px;
   position: absolute;
   background-image: -webkit-linear-gradient(
-    90deg,
-    rgb(252, 227, 138) 0%,
-    rgb(243, 129, 129) 100%
+    70deg,
+    rgb(169, 210, 212) 0%,
+    rgb(255, 255, 255) 100%
   );
   width: 300px;
   height: 300px;
@@ -65,14 +65,17 @@
 .Wrapper:hover .overlay {
   visibility: visible;
   transition: all 200ms linear;
-  box-shadow: 7px 7px 0px 0px rgba(216, 11, 11, 0.5);
-  transform: translate(-2%, -2%);
+  box-shadow: 15px 15px 1px 1px rgba(29, 25, 25, 0.5);
+  transform: translate(-5%, -5%);
+  /* align-content: center; не раскоменчивать */
+  /* align-content: center; не раскоменчивать */
 }
 
 .link {
   padding-top: 150px;
   margin-left: 10px;
 }
+
 
 .socialLinkWrapper svg:hover {
   fill: red;
@@ -99,7 +102,7 @@ a {
   text-transform: uppercase;
   width: 200px;
   height: 40px;
-  background-color: #eeeeee;
+  background-color: rgba(200, 201, 200, 0.76);
   border-radius: 10px;
   position: relative;
   left: 540px;
@@ -111,14 +114,20 @@ a {
 }
 
 .goback a {
-  color: var(--main-text-color);
+  color: #333333;
 }
-
+.goback:hover {
+  background-image: -webkit-linear-gradient(
+    70deg,
+    rgb(119, 138, 192) 0%,
+    rgb(255, 255, 255) 100%
+  );
+}
 .title {
   display: flex;
   justify-content: center;
-  color: var(--main-text-color);
-  font-size: 28px;
+  color: #333333;
+  font-size: 26px;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
