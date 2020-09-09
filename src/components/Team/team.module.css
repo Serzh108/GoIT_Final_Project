@@ -74,11 +74,11 @@
   margin-left: 10px;
 }
 
-a:hover {
+/* a:hover {
   fill: red;
-}
+} */
 
-svg:hover {
+.socialLinkWrapper svg:hover {
   fill: red;
 }
 
@@ -108,6 +108,10 @@ a {
   position: relative;
   left: 540px;
   top: 840px;
+}
+
+.goback:hover {
+  background-color: #aaa;
 }
 
 .goback a {
