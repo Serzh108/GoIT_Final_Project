@@ -13,21 +13,21 @@ const FormInputAddHabit = ({ setnewInput }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log('нас засабмитили:', newHabit);
     dispatch(habitsOperations.createHabit(newHabit));
     setnewInput(false);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={css.addInputForm} onSubmit={handleSubmit}>
         <input
           value={newHabit}
           autoFocus={true}
           onChange={handleQueryChange}
-          placeholder="Название..."
+          placeholder="Только буквы и цифры..."
           type="text"
           className={css.input}
+          pattern="[a-zA-Z0-9а-яА-Я/' ']+"
         />
       </form>
     </>

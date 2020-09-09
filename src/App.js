@@ -5,8 +5,7 @@ import './App.css';
 import RegistrationPage from './pages/auth/RegistrationPage';
 import LoginPage from './pages/auth/LoginPage';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
-
-// console.log('hello');
+import Team from './components/Team/Team';
 
 const App = () => {
   const { isAuth } = useSelector(state => state.auth);
@@ -15,13 +14,14 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
-        <Redirect to="/login" />
+        <Redirect to="/" />
       </Switch>
     );
   }
   return (
     <Switch>
       <Route exact path="/home" component={StatisticsPage} />
+      <Route path="/team" exact component={Team} />
       <Redirect to="/home" />
     </Switch>
   );

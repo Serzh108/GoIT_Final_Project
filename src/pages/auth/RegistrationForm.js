@@ -7,6 +7,8 @@ import styles from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 // temp!!!
 import authOperations from '../../redux/auth/authOperations';
+import RingLoader from 'react-spinners/RingLoader';
+import { css } from '@emotion/core';
 
 // import { notice} from '@pnotify/core';
 // import '@pnotify/core/dist/PNotify.css';
@@ -15,11 +17,11 @@ import authOperations from '../../redux/auth/authOperations';
 // import { css } from '@emotion/core';
 // import RingLoader from 'react-spinners/RingLoader';
 
-// const override = css`
-//   display: block;
-//   margin: 0 auto;
-//   border-color: red;
-// `;
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const initialState = {
   name: '',
@@ -57,9 +59,9 @@ function RegistrationForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setState({
-      isLoading: true,
-    });
+    // setState({
+    //   isLoading: true,
+    // });
     const {
       isnameOnFocus,
       isemailOnFocus,
@@ -67,19 +69,19 @@ function RegistrationForm() {
       isLoading,
       ...user
     } = state;
-
+    state.isLoading = true;
+    console.log('state.isLoading1111', state.isLoading);
     // запрос на бэк
     console.log('state', state);
-    console.log('user', user);
-    console.log('authOperations.registration', authOperations.registration());
+    // console.log('user', user);
+    // console.log('authOperations.registration', authOperations.registration());
 
-    dispatch(authOperations.registration(user)) && history.replace();
+    dispatch(authOperations.registration(user)).then(() => {
+      state.isLoading = false;
+      console.log('state.isLoading222', state.isLoading);
+    });
     reset();
-    // notice({
-    //   title: 'Please confirm your email',
-    //   text: 'Check your email',
-    // });
-    // history.replace('/login')
+    history.replace('/login');
   };
 
   const reset = () => {
@@ -104,17 +106,17 @@ function RegistrationForm() {
       <form onSubmit={handleSubmit} className={styles.form}>
         {state.isLoading && (
           <div className="sweet-loading">
-            {/* <RingLoader
+            <RingLoader
               css={override}
               size={35}
               color={'#ff6c00'}
-              loading={state.loading}
-            /> */}
-            <LoadingOverlay
+              loading={state.isLoading}
+            />
+            {/* <LoadingOverlay
               active={state.isLoading}
               spinner
               text="Секундочку..."
-            ></LoadingOverlay>
+            ></LoadingOverlay> */}
           </div>
         )}
         <label htmlFor={nameInputId} className={styles.nameLabel}>

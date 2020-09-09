@@ -5,10 +5,9 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 const getHabit = newHabit => async (dispatch, getState) => {
-  console.log('get started!');
+  dispatch(habitsSlice.actions.setIsLoading());
   try {
     const responseGet = await axios.get('/habits');
-    console.log('data from bek', responseGet.data.habits);
     dispatch(habitsSlice.actions.getAllHabits(responseGet.data));
   } catch (err) {
     error({
@@ -17,11 +16,11 @@ const getHabit = newHabit => async (dispatch, getState) => {
     });
     console.log('error', err);
   }
-  console.log('get finished!');
+  dispatch(habitsSlice.actions.resetIsLoading());
 };
 
 const createHabit = newHabit => async (dispatch, getState) => {
-  console.log('create started!');
+  dispatch(habitsSlice.actions.setIsLoading());
   try {
     const responseCreate = await axios.post('/habits', { name: newHabit });
     dispatch(habitsSlice.actions.addHabit(responseCreate.data));
@@ -32,11 +31,11 @@ const createHabit = newHabit => async (dispatch, getState) => {
     });
     console.log('error', err);
   }
-  console.log('create finished!');
+  dispatch(habitsSlice.actions.resetIsLoading());
 };
 
 const deleteHabit = habitId => async dispatch => {
-  console.log('delete started');
+  dispatch(habitsSlice.actions.setIsLoading());
   try {
     const deletedHabit = await axios.delete(`/habits/${habitId}`);
     if (deletedHabit.statusText === 'OK') {
@@ -54,11 +53,11 @@ const deleteHabit = habitId => async dispatch => {
     });
     console.log('error', err);
   }
-  console.log('delete finished!');
+  dispatch(habitsSlice.actions.resetIsLoading());
 };
 
 const updateHabitName = (name, id) => async (dispatch, getState) => {
-  console.log('update started');
+  dispatch(habitsSlice.actions.setIsLoading());
   const dataObj = { id, name };
   try {
     const updateHabit = await axios.patch('/habits', dataObj);
@@ -70,10 +69,11 @@ const updateHabitName = (name, id) => async (dispatch, getState) => {
     });
     console.log('error', err);
   }
-  console.log('update finished!');
+  dispatch(habitsSlice.actions.resetIsLoading());
 };
 
 const updateHabitData = (id, data) => async dispatch => {
+  dispatch(habitsSlice.actions.setIsLoading());
   const dataObj = { id, data };
   try {
     const updateHabit = await axios.patch('/habits', dataObj);
@@ -85,7 +85,7 @@ const updateHabitData = (id, data) => async dispatch => {
     });
     console.log('error', err);
   }
-  console.log('data update finished');
+  dispatch(habitsSlice.actions.resetIsLoading());
 };
 
 export default {

@@ -4,6 +4,7 @@ const state = {
   userName: null,
   access_token: null,
   isAuth: false,
+  isLoading: false,
 };
 
 export const authSlice = createSlice({
@@ -23,6 +24,14 @@ export const authSlice = createSlice({
       ...state,
       isAuth: false,
       access_token: null,
+    }),
+    setIsLoading: (state, { payload }) => ({
+      ...state,
+      isLoading: true,
+    }),
+    resetIsLoading: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
     }),
   },
 });

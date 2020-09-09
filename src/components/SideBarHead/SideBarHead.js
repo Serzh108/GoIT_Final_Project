@@ -3,7 +3,6 @@ import AddIcon from '@material-ui/icons/Add';
 import css from './sideBarHead.module.css';
 
 const SideBarHead = ({ addHabit, habitsLength }) => {
-  console.log('habitsLength', habitsLength);
   return (
     <>
       <td className={css.headTitle}>

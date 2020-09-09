@@ -1,3 +1,6 @@
+# GoIT_Final_Project Bootcamp19
+Final project in GoIT (React + Node.js)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

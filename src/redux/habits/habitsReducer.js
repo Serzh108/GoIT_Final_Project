@@ -4,6 +4,7 @@ const state = {
   userName: null,
   total: null,
   habits: [],
+  isLoading: false,
 };
 
 export const habitsSlice = createSlice({
@@ -30,6 +31,14 @@ export const habitsSlice = createSlice({
       habits: state.habits.map(habit =>
         habit._id === payload.updatedHabit._id ? payload.updatedHabit : habit,
       ),
+    }),
+    setIsLoading: (state, { payload }) => ({
+      ...state,
+      isLoading: true,
+    }),
+    resetIsLoading: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
     }),
   },
 });

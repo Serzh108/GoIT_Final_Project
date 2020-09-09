@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
 import style from './header.module.css';
 import ExitModal from '../ExitModal/ExitModal';
 import authOperations from '../../redux/auth/authOperations';
+// import Team from '../Team/Team';
 
 function Header({ handleLogOut, name, total }) {
   const [isExit, setisExit] = useState(false);
+  // const [isShowTeam, setisShowTeam] = useState(false)
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,11 +38,19 @@ function Header({ handleLogOut, name, total }) {
     dispatch(authOperations.signOut());
     history.replace('/login');
   };
+
+  // const showTeam = () => {
+  //   history.push('/team')
+
+  // }
   return (
     <>
       <header>
         <div className={style.headerContainer}>
-          <div className={style.wtf}></div>
+          {/* <img className='wtf' src="../../assets/images/header/bc19logo.png" width="50" height="50" alt="bc19"/> */}
+          <a href="/team" className={style.wtf}>
+            {' '}
+          </a>
           <ul className={style.userName}>
             <li className={style.userNameNick}>{name}</li>
             <li className={style.userNameLevel}>Новичок</li>
@@ -80,7 +90,6 @@ function Header({ handleLogOut, name, total }) {
               <button
                 // onClick={signOut}
                 onClick={showModalToExit}
-                // onClick={showModalToExit}
                 // isExit={isExit}
                 className={style.buttonLogout}
               ></button>
