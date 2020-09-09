@@ -50,7 +50,7 @@
 
 .sloganWrapper {
   display: flex;
-  flex-grow: 1;
+  flex-grow: 2;
   justify-content: center;
 }
 
@@ -61,7 +61,7 @@
   font-size: 16px;
   line-height: 20px;
   width: 234px;
-  padding-left: 12px;
+  padding-left: 8px;
   /* */
 }
 

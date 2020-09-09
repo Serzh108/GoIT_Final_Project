@@ -51,7 +51,7 @@ const teamData = [
     position: 'Project Manager',
     image: Mike,
     sociallist: {
-      // git: 'https://github.com/Ghore',
+      // git: '',
       linkedin: 'https://www.linkedin.com/in/mike-bogdanov-7b342389/',
       email: 'mailto:bogdanov.biss@gmail.com',
     },
