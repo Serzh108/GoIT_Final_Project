@@ -27,6 +27,7 @@ function StatisticsPage() {
   const { total } = useSelector(state => state.habits);
   const { habits } = useSelector(state => state.habits);
   const { isLoading } = useSelector(state => state.habits);
+  const [isOpen, setIsOpen] = useState(false);
 
   const dispatch = useDispatch();
   const habitsLength = habits.length;
@@ -34,6 +35,10 @@ function StatisticsPage() {
   useEffect(() => {
     dispatch(habitsOperations.getHabit());
   }, [dispatch]);
+
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
 
   const addHabit = () => {
     if (habitsLength < 10) {
@@ -97,6 +102,7 @@ function StatisticsPage() {
                       name={item.name}
                       habitId={item._id}
                     />
+
                     <TableNew
                       backData={item.data}
                       habitId={item._id}

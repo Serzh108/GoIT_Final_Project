@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './App.css';
-import RegistrationPage from './pages/auth/RegistrationPage';
-import LoginPage from './pages/auth/LoginPage';
+import RegistrationPage from './pages/auth/RegistrationPage.tsx';
+import LoginPage from './pages/auth/LoginPage.tsx';
 import StatisticsPage from './pages/dashboard/StatisticsPage';
 import Team from './components/Team/Team';
 

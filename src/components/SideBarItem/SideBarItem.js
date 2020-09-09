@@ -5,6 +5,8 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteHabitModal from '../DeleteHabitModal/DeleteHabitModal';
 import css from './sideBarItem.module.css';
 import habitsOperations from '../../redux/habits/habitsOperations';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import popTransition from '../Transition/pop.module.css';
 
 const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   const dispatch = useDispatch();
@@ -12,8 +14,13 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   const [showBtns, setshowBtns] = useState(false);
   const [editedHabit, seteditedHabit] = useState(name);
   const [localEdit, setlocalEdit] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const refOverlay = useRef();
+
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
 
   useEffect(() => {
     const handleEsc = event => {
@@ -63,6 +70,7 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
     dispatch(habitsOperations.updateHabitName(editedHabit, habitId));
     setisEdit(false);
     setlocalEdit(false);
+    // setIsOpen(true);
   };
 
   const setNameLength = name => {
@@ -81,30 +89,37 @@ const SideBarItem = ({ name, habitId, isEdit, setisEdit }) => {
   return (
     <>
       {!localEdit ? (
-        <td
-          className={css.habits}
-          onMouseOver={showButtons}
-          onMouseLeave={hideButtons}
+        <CSSTransition
+          in={isOpen}
+          timeout={500}
+          classNames={popTransition}
+          unmountOnExit
         >
-          {showName}
-          {showBtns && (
-            <div className={css.iconsWrap}>
-              <EditIcon
-                onClick={editHabit}
-                style={{
-                  opacity: 0.3,
-                  fontSize: 20,
-                  marginRight: '4px',
-                  cursor: 'pointer',
-                }}
-              ></EditIcon>
-              <DeleteForeverIcon
-                onClick={showModal}
-                style={{ opacity: 0.3, fontSize: 20, cursor: 'pointer' }}
-              ></DeleteForeverIcon>
-            </div>
-          )}
-        </td>
+          <td
+            className={css.habits}
+            onMouseOver={showButtons}
+            onMouseLeave={hideButtons}
+          >
+            {showName}
+            {showBtns && (
+              <div className={css.iconsWrap}>
+                <EditIcon
+                  onClick={editHabit}
+                  style={{
+                    opacity: 0.3,
+                    fontSize: 20,
+                    marginRight: '4px',
+                    cursor: 'pointer',
+                  }}
+                ></EditIcon>
+                <DeleteForeverIcon
+                  onClick={showModal}
+                  style={{ opacity: 0.3, fontSize: 20, cursor: 'pointer' }}
+                ></DeleteForeverIcon>
+              </div>
+            )}
+          </td>
+        </CSSTransition>
       ) : (
         <td
           style={{ backgroundColor: 'rgba(55, 59, 83, 0.9)', width: '214px' }}

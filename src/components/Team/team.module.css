@@ -76,8 +76,9 @@
   margin-left: 10px;
 }
 
-a:hover {
-  fill: rgba(145, 0, 0, 0.9);
+
+.socialLinkWrapper svg:hover {
+  fill: red;
 }
 
 .socialLinkWrapper {
@@ -107,6 +108,11 @@ a {
   left: 540px;
   top: 840px;
 }
+
+.goback:hover {
+  background-color: #aaa;
+}
+
 .goback a {
   color: #333333;
 }
