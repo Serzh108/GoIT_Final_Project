@@ -48,7 +48,9 @@ function Header({ handleLogOut, name, total }) {
       <header>
         <div className={style.headerContainer}>
           {/* <img className='wtf' src="../../assets/images/header/bc19logo.png" width="50" height="50" alt="bc19"/> */}
-          <a href="/team" className={style.wtf}></a>
+          <a href="/team" className={style.wtf}>
+            {' '}
+          </a>
           <ul className={style.userName}>
             <li className={style.userNameNick}>{name}</li>
             <li className={style.userNameLevel}>Новичок</li>
