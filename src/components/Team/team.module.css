@@ -74,11 +74,7 @@
   margin-left: 10px;
 }
 
-a:hover {
-  fill: red;
-}
-
-svg:hover {
+.socialLinkWrapper svg:hover {
   fill: red;
 }
 
