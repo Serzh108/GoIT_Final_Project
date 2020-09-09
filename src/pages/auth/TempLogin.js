@@ -17,6 +17,24 @@ const override = css`
   border-color: red;
 `;
 
+// interface IinitialState  {
+//   email: string;
+//   password:  string;
+//   isemailOnFocus: boolean;
+//   ispasswordOnFocus: boolean;
+// };
+
+// interface IState {
+//   userName: string;
+//   access_token: string;
+//   isAuth:  boolean;
+//   isLoading:  boolean;
+// };
+
+// interface Props {
+//   replace: (path: string) => string;
+// }
+
 const initialState = {
   email: '',
   password: '',
@@ -32,28 +50,34 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 
-function LoginForm({ history }) {
+function LoginForm({ history: { replace } }) {
   const dispatch = useDispatch();
   const [state, setState] = useState(initialState);
+  // const { isLoading } = useSelector((state: IState) => state.auth);
   const { isLoading } = useSelector(state => state.auth);
   const emailInputId = uuidv4();
   const passwordInputId = uuidv4();
 
+  // const handleSubmit = (values: IinitialState) => {
   const handleSubmit = values => {
     const { isemailOnFocus, ispasswordOnFocus, ...user } = values;
     dispatch(authOperations.login(user));
     reset();
-    history.replace('/home');
+    // history.replace('/home');
+    replace('/home');
   };
 
   const reset = () => {
-    setState({ email: '', password: '' });
+    setState(initialState);
   };
 
+  // const inputFocused = (e: React.ChangeEvent<HTMLInputElement>) => {
   const inputFocused = e => {
     const { name } = e.currentTarget;
     setState(prev => ({ ...prev, [`is${name}OnFocus`]: true }));
   };
+
+  // const inputBlured = (e: React.ChangeEvent<HTMLInputElement>) => {
   const inputBlured = e => {
     const { name } = e.currentTarget;
     setState(prev => ({ ...prev, [`is${name}OnFocus`]: false }));
@@ -71,7 +95,7 @@ function LoginForm({ history }) {
             position: 'absolute',
             top: '35%',
             left: '45%',
-            zIndex: '200',
+            zIndex: 200,
           }}
         >
           <RingLoader
